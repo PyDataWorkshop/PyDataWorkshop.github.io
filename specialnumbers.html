@@ -1,0 +1,26 @@
+<h5>Special Numbers : inf and NaN</h5>
+<ul>
+
+<li> \texttt{inf} represents infinity and \texttt{inf} is distinct from \texttt{-inf}.
+<li> \texttt{inf} can be constructed in a number for ways, for
+example or exp(710). 
+
+<li> \texttt{nan} stands for <b>Not a Number</b>, and nans are created whenever a function produces
+a result that cannot be clearly evaluated to produce a number or infinity. For example, \texttt{inf/-inf} results in
+\texttt{nan}. 
+<li> \texttt{nans} often cause problems since most mathematical operations involving a \texttt{nan }produce a \texttt{nan}.
+</ul>
+
+<pre>
+<code>
+>>> x = nan
+>>> 1.0 + x
+nan
+>>> 1.0 * x
+nan
+>>> 0.0 * x
+nan
+>>> mean(x)
+nan
+</code>
+</pre>
