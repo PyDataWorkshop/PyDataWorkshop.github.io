@@ -1,0 +1,43 @@
+\section{Bivariate data}
+
+\subsection{Preliminaries}
+
+\begin{framed}
+\begin{verbatim}
+import scipy
+import numpy as np
+import matplotlib at plt
+\end{verbatim}
+\end{framed}
+\subsection{What is Bivariate and Multivariate data?}
+
+A dataset with two variables contains what is called \textbf{bivariate data}. For example, the heights and weights of people (e.g. for the purposes of determining the extent to which taller people weigh more). Common bivariate statistical analyses include
+\begin{itemize}
+\item Correlation Analysis
+\item Simple Linear Regression
+\end{itemize}
+Multivariate Data describes the situation where a phenomenum is described by two or more variables. For example, Height Weight Body Mass Index, Choloestorol level etc 
+
+
+\subsection{Scatter Plot} A scatter plot of two variables shows the values of one variable on the Y axis and the values of the other variable on the X axis. Scatter plots are well suited for revealing the relationship between two variables. Scatterplots can be implemented using the \texttt{matplotlib} library using the command \texttt{\textbf{plot()}}
+
+\subsubsection*{Exercise:} Let us construct scatter-plots for the \textbf{\textit{Immer}} and \textbf{\textit{Iris}} data sets.
+
+\begin{framed}
+\begin{verbatim}
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+N = 50
+x = np.random.rand(N)
+y = np.random.rand(N)
+colors = np.random.rand(N)
+#area = np.pi * (15 * np.random.rand(N))**2 # 0 to 15 point radiuses
+
+plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+plt.show()
+\end{verbatim}
+\end{framed}
+More complex scatterplots, with better visual aesthetics, can be constructed. We will look at this more later on in the semester.
+
