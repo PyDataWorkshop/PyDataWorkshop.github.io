@@ -1,0 +1,100 @@
+\subsection{Correlation}
+\begin{itemize}
+\item Recall that correlation describes the strength of a relationship between two numeric variables, and that the \textbf{\textit{Pearson product-moment correlation coefficient}} is a measure of the strength of the linear relationship between two variables.
+
+\item It is referred to as Pearson's correlation or simply as the correlation coefficient. If the relationship between the variables is not linear, then the correlation coefficient does not adequately represent the strength of the relationship between the variables.
+
+\item The symbol for Pearson's correlation is "$\rho$" when it is measured in the population and \texttt{\textbf{r}} when it is measured in a sample.
+
+\item As we will be dealing almost exclusively with samples, we will use \texttt{\textbf{r}} to to represent Pearson's correlation unless otherwise noted.
+
+\item Pearson's r can range from -1 to 1. An r of -1 indicates a perfect negative linear relationship between variables, an \texttt{\textbf{r}} of 0 indicates no linear relationship between variables, and an \texttt{\textbf{r}} of 1 indicates a perfect positive relationship between variables.
+
+\item Importantly it is assumed that the relationship in question is supposed to be linear. Some variables will in fact have a non-linear relationship (more on that later)
+\end{itemize}
+\newpage
+\subsubsection*{Implementation}
+The relevant \texttt{R} command to compute the correlation coefficient estimate is simply \texttt{\textbf{corrcoef()}}.
+
+
+\begin{framed}
+\begin{verbatim}
+cor(immer$Y1,immer$Y2)
+
+cor(iris[,1],iris[,3])
+\end{verbatim}
+\end{framed}
+\begin{itemize}
+\item The strength of the relation is represented in a numeric value known at the correlation coefficient. 
+\item This coefficient can take a value between -1 and 1. Additionally there are no units.
+\end{itemize}
+\[ -1 \leq r \leq 1\]
+
+\subsection*{Test for Significance}
+Getting a correlation coefficient is generally only half the story; you will want to know if the relationship is significant. There is a more complex command called \texttt{\textbf{cor.test()}}. This command additionally provides a hypothesis test for the correlation estimate. The null and alternative hypotheses are as follows.
+
+\begin{itemize}
+	\item[Ho] : The correlation coefficient for the population of values is zero. (i.e. No linear relationship.)
+	\item[Ha] : The coefficient is not zero. (Linear relationship exists.)
+\end{itemize}
+
+\begin{framed}
+\begin{verbatim}
+scipy.stats.pearsonr(x, y)[source]
+\end{verbatim}
+\end{framed}
+
+	
+
+
+A confidence interval for the coefficient is provided for in the \texttt{R} output. If the interval includes 0 then we fail to reject the null hypothesis.
+\newpage
+\subsection*{Spearman and Kendall Correlation Coefficients}
+The Spearman's rank-order and Kendall Tau correlation coefficients are the \textbf{nonparametric} version of the Pearson product-moment correlation. Both methods measure the strength of association between two \textbf{ranked} (ordinal) variables. The coefficients are interpreted the same way.
+\begin{framed}
+	\begin{verbatim}
+### Spearman Correlation Coefficient
+
+>>> spearmanr([1,2,3,4,5],[5,6,7,8,7])
+(0.82078268166812329, 0.088587005313543798)
+>>> np.random.seed(1234321)
+>>> x2n=np.random.randn(100,2)
+>>> y2n=np.random.randn(100,2)
+>>> spearmanr(x2n)
+(0.059969996999699973, 0.55338590803773591)
+>>> spearmanr(x2n[:,0], x2n[:,1])
+(0.059969996999699973, 0.55338590803773591)
+>>> rho, pval = spearmanr(x2n,y2n)
+>>> rho
+array([[ 1.        ,  0.05997   ,  0.18569457,  0.06258626],
+[ 0.05997   ,  1.        ,  0.110003  ,  0.02534653],
+[ 0.18569457,  0.110003  ,  1.        ,  0.03488749],
+[ 0.06258626,  0.02534653,  0.03488749,  1.        ]])
+>>> pval
+array([[ 0.        ,  0.55338591,  0.06435364,  0.53617935],
+[ 0.55338591,  0.        ,  0.27592895,  0.80234077],
+[ 0.06435364,  0.27592895,  0.        ,  0.73039992],
+[ 0.53617935,  0.80234077,  0.73039992,  0.        ]])
+>>> rho, pval = spearmanr(x2n.T, y2n.T, axis=1)
+>>> rho
+array([[ 1.        ,  0.05997   ,  0.18569457,  0.06258626],
+[ 0.05997   ,  1.        ,  0.110003  ,  0.02534653],
+[ 0.18569457,  0.110003  ,  1.        ,  0.03488749],
+[ 0.06258626,  0.02534653,  0.03488749,  1.        ]])
+
+
+### Kendall Correlation Coefficient
+
+>>> import scipy.stats as stats
+>>> x1 = [12, 2, 1, 12, 2]
+>>> x2 = [1, 4, 7, 1, 0]
+>>> tau, p_value = stats.kendalltau(x1, x2)
+>>> tau
+-0.47140452079103173
+>>> p_value
+0.24821309157521476
+
+	\end{verbatim}
+\end{framed}
+Non parametric statistics are statistics that do not require any special assumptions (i.e. Assumption of normality).
+
