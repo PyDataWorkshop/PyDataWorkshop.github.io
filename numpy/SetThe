@@ -1,0 +1,23 @@
+\section*{Set Theory : Set Operations with NumPy}
+
+\begin{itemize}
+\item Intersection (AND)
+\item Union (OR)
+\item Set Difference
+\item Exclusive Or
+\end{itemize}
+
+
+\subsection{Making proper sets}
+\begin{description}
+\item[\texttt{unique()}]	Find the unique elements of an array.
+\end{description}
+\subsection{Boolean operations}
+
+\begin{description}
+\item[\texttt{in1d()}]	Test whether each element of a 1-D array is also present in a second array.
+\item[\texttt{intersect1d()}]	Find the intersection of two arrays.
+\item[\texttt{setdiff1d()}]	Find the set difference of two arrays.
+\item[\texttt{setxor1d()}]	Find the set exclusive-or of two arrays.
+\item[\texttt{union1d()}]	Find the union of two arrays.
+\end{description}
