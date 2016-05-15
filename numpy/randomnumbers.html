@@ -1,22 +1,22 @@
-	
-\section{Random Number Generation with NumPy}
+﻿	
+<h1>Random Number Generation with NumPy</h1>
 
  For the sake of brevity, the specific functions names are given in the example below, rather than the full specification.
 
-The \texttt{rand()} command is fully specified as \texttt{np.random.rand()}
+The <tt>rand()</tt> command is fully specified as <tt>np.random.rand()</tt>
 
 
 % 19.1 Simulating Random Variables
 % - 19.1.1 Core Random Number Generators
-NumPy random number generators are all stored in the module \texttt{numpy.random}. 
-These can be imported with using \texttt{import numpy as np} and then calling \texttt{np.random.rand}, for example, or 
-by importing \texttt{import numpy.random as rnd} and \texttt{using rnd.rand.1}.
-<h5>\texttt{rand}, \texttt{random\_sample</h5>
-\texttt{rand} and \texttt{random\_sample }are uniform randomnumber generators whichare
+NumPy random number generators are all stored in the module <tt>numpy.random</tt>. 
+These can be imported with using <tt>import numpy as np</tt> and then calling <tt>np.random.rand</tt>, for example, or 
+by importing <tt>import numpy.random as rnd</tt> and <tt>using rnd.rand.1</tt>.
+<h4><tt>rand</tt>, <tt>random_sample</tt></h4>
+<tt>rand} and <tt>random_sample }are uniform randomnumber generators whichare
  identicalexceptthat rand takes a variable number 
-of integer inputs – one for each dimension – while \texttt{random\_sample} takes a n-element tuple. 
+of integer inputs – one for each dimension – while <tt>random_sample</tt> takes a n-element tuple. 
 
- \texttt{random\_sample} is the preferred NumPy function, and \texttt{rand} is a convenience function primarily for \textit{MATLAB} users.
+ <tt>random_sample} is the preferred NumPy function, and <tt>rand} is a convenience function primarily for \textit{MATLAB} users.
 <pre>
 <code>
 x = rand(3,4,5) 
@@ -26,14 +26,14 @@ y = random_sample((3,4,5))
 
 
 <br>
-<h5>\texttt{randn, standard\_normal</h5>
+<h4><tt>randn, standard_normal</h4>
 <ul>
-<li> \texttt{randn} and \texttt{standard\_normal} are standard normal (i.e. Z-value) random number generators. \texttt{randn}, like \texttt{rand}, takes a
-variable number of integer inputs, and \texttt{standard\_normal} takes an n-element tuple. 
+<li> <tt>randn</tt> and <tt>standard_normal</tt> are standard normal (i.e. Z-value) random number generators. <tt>randn</tt>, like <tt>rand</tt>, takes a
+variable number of integer inputs, and <tt>standard_normal</tt> takes an n-element tuple. 
 <li> Both can be called
 with no arguments to generate a single standard normal (e.g. randn()). 
-<li> \texttt{standard\_normal }is the preferred
-NumPy function, and \texttt{randn} is a convenience function intended primarily for MATLAB users .
+<li> <tt>standard_normal</tt> is the preferred
+NumPy function, and <tt>randn</tt> is a convenience function intended primarily for MATLAB users .
 </ul>
 
 <pre>
@@ -43,19 +43,19 @@ NumPy function, and \texttt{randn} is a convenience function intended primarily 
 </code>
 </pre>
 <br>
-%========================================= %
-<h5>\texttt{randint, random\_integers</h5>
-\texttt{randint} and \texttt{random\_integers} are uniform integer random number generators which take 3 inputs: low,
+
+<h4><tt>randint, random_integers</h4>
+<tt>randint} and <tt>random_integers</tt> are uniform integer random number generators which take 3 inputs: low,
 high and size. 
 <ul>
-<li> \texttt{low} is the lower bound of the integers generated, 
-<li> \texttt{high} is the upper,
-<li> \texttt{size} is a n-elementtuple. 
+<li> <tt>low} is the lower bound of the integers generated, 
+<li> <tt>high} is the upper,
+<li> <tt>size} is a n-elementtuple. 
 </ul>
 
 <b>Important:</b><br>
- \texttt{randint} and \texttt{random\_integers} differ in that \texttt{randint} generates integers exclusive of the value in \texttt{high}
-(as do most Python functions), while \texttt{random\_integers} includes the value in \texttt{high} in its range.
+ <tt>randint} and <tt>random_integers</tt> differ in that <tt>randint</tt> generates integers exclusive of the value in <tt>high</tt>
+(as do most Python functions), while <tt>random_integers</tt> includes the value in <tt>high</ttt> in its range.
 <pre>
 <code>
 x = randint(0,10,(100))
@@ -67,11 +67,10 @@ y.max()
 # Is 10 since range is [0,10]
 </code>
 </pre>
-%================================================ %
-% -------19.1.2 Random Array Functions
+<h3> Random Array Functions</h3>
 <br>
-<h5>\texttt{shuffle</h5>
-\texttt{shuffle} randomly reorders the elements of an array in place.
+<h4><tt>shuffle</h4>
+<tt>shuffle} randomly reorders the elements of an array in place.
 <pre>
 <code>
 >>> x = arange(10)
@@ -81,9 +80,9 @@ array([4, 6, 3, 7, 9, 0, 2, 1, 8, 5])
 </code>
 </pre>
 
-%================================================ %
-<h5>\texttt{permutation</h5>
-\texttt{permutation} returns randomly reordered elements of an array as a copy while not directly changing the
+
+<h4><tt>permutation</h4>
+<tt>permutation} returns randomly reordered elements of an array as a copy while not directly changing the
 input.
 <pre>
 <code>
@@ -94,30 +93,30 @@ array([2, 5, 3, 0, 6, 1, 9, 8, 4, 7])
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 </code>
 </pre>
-% -------19.1.3 Select Random Number Generators
+<h3>Select Random Number Generators</h3>
 <ul>
 <li> NumPy provides a large selection of random number generators for specific distribution. 
 <li> All take between
 0 and 2 required inputs which are parameters of the distribution, plus a tuple containing the size of the
 output. 
-<li> All random number generators are in the module \texttt{numpy.random}.
+<li> All random number generators are in the module <tt>numpy.random}.
 </ul>
 <br>
 
-<h5>\texttt{seed</h5>
-% 19.2.2 
+<h4><tt>seed</h4>
+
 <ul>
-<li> \texttt{numpy.random.seed} is a more useful function for initializing the random number generator, and can be
-used in one of two ways. \texttt{seed()} will initialize (or reinitialize) the random number generator using some
+<li> <tt>numpy.random.seed</tt> is a more useful function for initializing the random number generator, and can be
+used in one of two ways. <tt>seed()</tt> will initialize (or reinitialize) the random number generator using some
 actual random data provided by the operating system.
 
-<li> \texttt{seed( s )} takes a vector of values (can be scalar) to
+<li> <tt>seed( s )</tt> takes a vector of values (can be scalar) to
 initialize the random number generator at particular state. 
-<li> \texttt{seed( s )} is particularly useful for producing
+<li> <tt>seed( s )</tt> is particularly useful for producing
 simulation studies which are reproducible. 
-\subsubsection*{Example}
-In the following example, calls to \texttt{seed()} produce different
-random numbers, since these reinitialize using random data from the computer, while calls to \texttt{seed(0)}
+<h4>Example</h4>
+In the following example, calls to <tt>seed()</tt> produce different
+random numbers, since these reinitialize using random data from the computer, while calls to <tt>seed(0)</tt>
 produce the same random number or sequence of random numbers.
 <br>
 </ul>
@@ -146,28 +145,28 @@ produce the same random number or sequence of random numbers.
 	>>> #Same as last draw
 	</code>
 </pre>
-NumPy always calls \texttt{seed()}  when the first random number is generated. As a result. calling \texttt{standard\_normal()}
+NumPy always calls <tt>seed()</tt>  when the first random number is generated. As a result. calling <tt>standard_normal()}
 across two “fresh” sessions will not produce the same random number.
 <br>
 
 % 19.1.2 Random Array Functions
 %======================================================================== %
 % 19.1.3 Select Random Number Generators
-<h5>Select Random Number Generators}
+<h4>Select Random Number Generators</h4>
 <ul>
 <li> NumPy provides a large selection of random number generators for specific distribution. 
 
 <li> All take between 0 and 2 required inputs which are parameters of the distribution, plus a tuple containing the size of the output. 
 <li> All random number generators are in the module 
-\texttt{numpy.random}.
+<tt>numpy.random}.
 </ul>
 
 
-<h5>Bernoulli}
+<h4>Bernoulli</h4>
 <ul>
-<li> There is no \textbf{\textit{Bernoulli generator</h5>. 
-<li> Instead use \texttt{binomial(1,p)} to generate a single draw or \texttt{binomial(1,p,(10,10))} to generate an array where 
-\texttt{p} is the probability of success.
+<li> There is no \textbf{\textit{Bernoulli generator</h4>. 
+<li> Instead use <tt>binomial(1,p)} to generate a single draw or <tt>binomial(1,p,(10,10))} to generate an array where 
+<tt>p} is the probability of success.
 </ul>
 
 
@@ -175,21 +174,21 @@ across two “fresh” sessions will not produce the same random number.
 %=================================%
 
 %19.2 Simulation and Random Number Generation
-<h5>Simulation and Random Number Generation}
+<h4>Simulation and Random Number Generation</h4>
 <ul>
 <li> Computer simulated random numbers are usually constructed from very complex but ultimately deterministic
 functions. 
 <li> Because they are not actually random, simulated random numbers are generally described
 to as \textbf{pseudo-random}. 
 <li> All pseudo-random numbers in NumPy use one core random number generator
-based on the \textbf{\textit{Mersenne Twister</h5>, a generator which can produce a very long series of pseudo-random
+based on the \textbf{\textit{Mersenne Twister</h4>, a generator which can produce a very long series of pseudo-random
 data before repeating (up to $2^19937 - 1$ non-repeating values).
 </ul>
 %======================================================== %
 <br>
-<h5>\texttt{RandomState</h5>
-\texttt{RandomState} is the class used to control the random number generators. Multiple generators can be initialized
-by \texttt{RandomState}.
+<h4><tt>RandomState</h4>
+<tt>RandomState} is the class used to control the random number generators. Multiple generators can be initialized
+by <tt>RandomState}.
 <pre>
 	<code>
 	>>> gen1 = np.random.RandomState()
@@ -219,15 +218,15 @@ by \texttt{RandomState}.
 </pre>
 %==============%
 % 19.2.1
-<h5>\texttt{ State</h5>
+<h4><tt> State</h4>
 <ul>
 <li> Pseudo-random number generators track a set of values known as the \textit{state}. 
 <li> The state is usually a vector
 which has the property that if two instances of the same pseudo-random number generator have the
 same state, the sequence of pseudo-random numbers generated will be identical. 
 <li> The state of the default
-random number generator can be read using \\ \texttt{numpy.random.get\_state} and can be restored using
-\texttt{numpy.random.set\_state}.
+random number generator can be read using \\ <tt>numpy.random.get_state} and can be restored using
+<tt>numpy.random.set_state}.
 </ul>
 
 <pre>
@@ -243,29 +242,29 @@ random number generator can be read using \\ \texttt{numpy.random.get\_state} an
 	</code>
 </pre>
 <ul>
-<li> The two sequences are identical since they the state is the same when \texttt{randn} is called. 
+<li> The two sequences are identical since they the state is the same when <tt>randn</tt> is called. 
 <li> The state is a 5-
 element tuple where the second element is a 625 by 1 vector of unsigned 32-bit integers. 
 <li> In practice the
-state should only be stored using \texttt{get\_state} and restored using \texttt{set\_state}.
+state should only be stored using <tt>get_state} and restored using <tt>set_state}.
 </ul>
 
 <br>
 
-<h5>\texttt{get\_state</h5>
+<h4><tt>get_state</h4>
 %19.2
 <ul>
-<li> \texttt{get\_state()} gets the current state of the random number generator, which is a 5-element tuple. 
+<li> <tt>get_state()} gets the current state of the random number generator, which is a 5-element tuple. 
 <li> It can be
 called as a function, in which case it gets the state of the default random number generator, or as a method
-on a particular instance of \texttt{RandomState}.
+on a particular instance of <tt>RandomState}.
 </ul>
 
-<h5>\texttt{set\_state</h5>
+<h4><tt>set_state</h4>
 %19.2.1
 <ul>
-<li> \texttt{set\_state(state)} sets the state of the random number generator. 
+<li> <tt>set_state(state)} sets the state of the random number generator. 
 <li> It can be called as a function, in which
 case it sets the state of the default random number generator, or as a method on a particular instance of
-\texttt{RandomState}.<li> \texttt{set\_state} should generally only be called using a state tuple returned by \texttt{get\_state}.
+<tt>RandomState}.<li> <tt>set_state} should generally only be called using a state tuple returned by <tt>get_state}.
 </ul>

@@ -1,0 +1,108 @@
+﻿<h1>Arrays and Matrices</h1>
+\textit{\textbf{NumPy}} provides the most important data types for econometrics, statistics and numerical analysis – \textbf{arrays}
+and \textbf{matrices}. The difference between these two data types are:
+<ul>
+<li> Arrays can have 1, 2, 3 or more dimensions, and matrices \textbf{always} have 2 dimensions. This means
+that a 1 by n vector stored as an array has 1 dimension and n elements, while the same vector stored
+as a matrix has 2-dimensions where the sizes of the dimensions are 1 and n (in either order).
+<li>  Standard mathematical operators on arrays operate element-by-element. This is not the case for
+matrices, where multiplication ($\ast$) follows the rules of \textit{linear algebra}.
+<li> 2-dimensional arrays can be
+multiplied using the rules of linear algebra using dot. 
+<li> Similarly, the function multiply can be used
+on two matrices for \textit{element-by-element} multiplication.
+<li>  Arrays are more common than matrices, and all functions are thoroughly tested with arrays. 
+<li> Functions
+should also work with matrices, but an occasional strange result may be encountered.
+<li>  Arrays can be quickly treated as a matrix using either \texttt{asmatrix} or \texttt{mat} without copying the underlying
+data.
+</ul>
+The best practice is to use arrays and to use the \texttt{asmatrix} view when writing linear algebra-heavy code. It is
+also important to test any custom function with both arrays and matrices to ensure that false assumptions
+about the behavior of multiplication have not been made.
+
+<h2>Arrays</h2>
+Arrays are the base data type in NumPy, are are arrays in some ways similar to lists since they both contain
+collections of elements. The focus of this section is on \textit{homogeneous} arrays containing numeric data
+– that is, an array where all elements have the same numeric type
+
+
+Additionally, arrays, unlike lists, are always rectangular so that all rows have the same
+number of elements.
+
+Arrays are initialized from lists (or tuples) using array. Two-dimensional arrays are initialized using
+lists of lists (or tuples of tuples, or lists of tuples, etc.), and higher dimensional arrays can be initialized by
+further nesting lists or tuples.
+
+<pre>
+<code>
+>>> x = [0.0, 1, 2, 3, 4]
+>>> y = array(x)
+>>> y
+array([ 0., 1., 2., 3., 4.])
+>>> type(y)
+numpy.ndarray
+</code>
+</pre>
+Two (or higher) -dimensional arrays are initialized using nested lists.
+<pre>
+<code>
+>>> y = array([[0.0, 1, 2, 3, 4], [5, 6, 7, 8, 9]])
+>>> y
+array([[ 0., 1., 2., 3., 4.],
+[ 5., 6., 7., 8., 9.]])
+>>> shape(y)
+(2L, 5L)
+>>> y = array([[[1,2],[3,4]],[[5,6],[7,8]]])
+>>> y
+array([[[1, 2],
+[3, 4]],
+[[5, 6],
+[7, 8]]])
+>>> shape(y)
+(2L, 2L, 2L)
+</code>
+</pre>
+<h2>Array dtypes</h2>
+
+Homogeneous arrays can contain a variety of numeric data types. The most useful is ’\texttt{float64}’, which corresponds
+to the python built-in data type of float (andC/C++double). By default, calls to array will preserve
+the type of the input, if possible. If an input contains all integers, it will have a dtype of ’int32’ (similar to
+the built in data type int). If an input contains integers, floats, or a mix of the two, the array’s data type will
+be float64. If the input contains a mix of integers, floats and complex types, the array will be initialized
+to hold complex data.
+<pre>
+<code>
+>>> x = [0, 1, 2, 3, 4] # Integers
+>>> y = array(x)
+>>> y.dtype
+dtype(’int32’)
+>>> x = [0.0, 1, 2, 3, 4] # 0.0 is a float
+>>> y = array(x)
+>>> y.dtype
+dtype(’float64’)
+>>> x = [0.0 + 1j, 1, 2, 3, 4] # (0.0 + 1j) is a complex
+>>> y = array(x)
+>>> y
+array([ 0.+1.j, 1.+0.j, 2.+0.j, 3.+0.j, 4.+0.j])
+>>> y.dtype
+dtype(’complex128’)
+</code>
+</pre>
+NumPy attempts to find the smallest data type which can represent the data when constructing an array.
+It is possible to force NumPy to select a particular dtype by using the keyword argument dtype=datetype
+when initializing the array.
+<pre>
+<code>
+>>> x = [0, 1, 2, 3, 4] # Integers
+>>> y = array(x)
+>>> y.dtype
+dtype(’int32’)
+>>> y = array(x, dtype=’float64’) # String dtype
+>>> y.dtype
+dtype(’float64’)
+>>> y = array(x, dtype=float64) # NumPy type dtype
+>>> y.dtype
+dtype(’float64’)
+</code>
+</pre>
