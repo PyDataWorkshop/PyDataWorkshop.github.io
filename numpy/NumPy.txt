@@ -1,0 +1,9 @@
+NumPy Exercises
+
+
+Compute Entropy
+
+Markov Chains
+
+
+% - http://www.scipy-lectures.org/intro/numpy/exercises.html#data-statistics
