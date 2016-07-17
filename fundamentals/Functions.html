@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>importingmodules</title>
+<title>Functions</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,13 +176,32 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-import-function">The <code>import</code> function<a class="anchor-link" href="#The-import-function">&#182;</a></h1><p>Back to <a href="http://pydataworkshop.github.io/">main page</a> | <a href="http://pydataworkshop.github.io/fundamentals/">fundamentals of Python </a></p>
-<p>Python, by default, only has access to a small number of built-in types and functions. The vast majority of functions are located in modules, and before a function can be accessed, the module which contains the function must be imported.</p>
+<h1 id="Functions-in-Python">Functions in Python<a class="anchor-link" href="#Functions-in-Python">&#182;</a></h1><p>Back to <a href="http://pydataworkshop.github.io/">PyDataWorkshop site</a> | <a href="http://pydataworkshop.github.io/fundamentals/">Fundamentals of Python </a></p>
+<p>A function is a block of organized, reusable code that is used to perform a single, related action.</p>
+<p>Functions provide better modularity for your application and a high degree of code reusing.</p>
+<p>As you already know, Python gives you many built-in functions like <code>print()</code>, etc. but you can also create your own functions. These functions are called <strong><em> user-defined functions</em></strong>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Defining-a-Function">Defining a Function<a class="anchor-link" href="#Defining-a-Function">&#182;</a></h3><p>You can define functions to provide the required functionality. Here are simple rules to define a function in Python.</p>
 <ul>
-<li><p>For example, when using <code>ipython --pylab</code> (or any variants), a large number
-of modules are automatically imported, including NumPy and matplotlib.</p>
+<li><p>Function blocks begin with the keyword def followed by the function name and parentheses ( ( ) ).</p>
 </li>
-<li><p>This is style of importing useful for learning and interactive use, but care is needed to make sure that the correct module is imported when designing more complex programs.</p>
+<li><p>Any input parameters or arguments should be placed within these parentheses. You can also define parameters inside these parentheses.</p>
+</li>
+<li><p>The first statement of a function can be an optional statement - the documentation string of the function or docstring.</p>
+</li>
+<li><p>The code block within every function starts with a colon (:) and is indented.</p>
+</li>
+<li><p>The statement <code>return [expression]</code> exits a function, optionally passing back an expression to the caller.</p>
+</li>
+<li><p>A return statement with no arguments is the same as return None.</p>
 </li>
 </ul>
 
@@ -194,128 +213,35 @@ of modules are automatically imported, including NumPy and matplotlib.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p><code>import</code> can be used in a variety of ways. The simplest is to use from module <code>import *</code> which imports
-all functions in module.</p>
-</li>
-<li><p>This method of using import can dangerous since if you use it more than once,
-it is possible for functions to be hidden by later imports.</p>
-</li>
-<li><p>A better method is to just import the required functions.</p>
-</li>
-<li><p>This still places functions at the top level of the namespace, but can be used to avoid conflicts.</p>
-</li>
-</ul>
+<p><pre><code>
+Syntax
+def functionname( parameters ):
+   "function_docstring"
+   function_suite
+   return [expression]
+</code></pre>
+By default, parameters have a positional behavior and you need to inform them in the same order that they were defined.</p>
+<h4 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h4><p>The following function takes a string as input parameter and prints it 
+on standard screen.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Will import log2 only</span>
-
-<span class="kn">from</span> <span class="nn">pylab</span> <span class="k">import</span> <span class="n">log2</span> 
-
-<span class="c1"># Will not import the log2 from SciPy</span>
-
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">log10</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">printme</span><span class="p">(</span> <span class="nb">str</span> <span class="p">):</span>
+   <span class="s2">&quot;This prints a passed string into this function&quot;</span>
+   <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+   <span class="k">return</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">The</span> <span class="n">functions</span> \<span class="n">texttt</span><span class="p">{</span><span class="n">log2</span><span class="p">}</span> <span class="ow">and</span> \<span class="n">texttt</span><span class="p">{</span><span class="n">log10</span><span class="p">}</span> <span class="n">can</span> <span class="n">both</span> <span class="n">be</span> <span class="n">called</span> <span class="ow">in</span> <span class="n">subsequent</span> <span class="n">code</span><span class="o">.</span> 
-
-<span class="n">An</span> <span class="n">alternative</span><span class="p">,</span> <span class="ow">and</span> <span class="n">more</span> <span class="n">common</span><span class="p">,</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">use</span> <span class="kn">import</span> <span class="nn">in</span> <span class="n">the</span> <span class="n">form</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-9-d632d3691bee&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">1</span>
-<span class="ansiyellow">    The functions \texttt{log2} and \texttt{log10} can both be called in subsequent code.</span>
-<span class="ansigrey">                ^</span>
-<span class="ansired">SyntaxError</span><span class="ansired">:</span> invalid syntax
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pylab</span>
-<span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">import</span> <span class="nn">numpy</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>which allows functions to be accessed using dot-notation and the module name, for example <code>scipy.log2</code>. It is also possible to rename modules when imported using as</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">pl</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>The only difference between these two is that <code>import scipy</code> is implicitly calling <code>import scipy as scipy</code>.</li>
-<li>When this form of <code>import</code> is used, functions are used with the shortended <code>as</code> name. </li>
-<li>For example, the load provided by NumPy is accessed using <code>sp.log2</code>, while the pylab load is <code>pl.log2</code> – and both can be used where appropriate.</li>
-<li>While this method is the most general, it does require slightly more typing.</li>
-</ul>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
