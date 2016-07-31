@@ -42,7 +42,7 @@
 </style>
 
 <a href="http://PyDataWorkshop.github.io"> Main Menu </a> | <a href="http://PyDataWorkshop.github.io/numpy"> numpy Menu </a> | <a href="http://PyDataWorkshop.github.io/scipy"> scipy Menu </a> | <a href="index.html"> pandas Menu </a>
-<h5>Fundamentals of Python: Exercises</h5>
+<h5>Pandas: Working with pivot tables</h5>
 
 <span style="text-decoration:underline;"><strong>Working with Tables</strong></span>
 
@@ -57,18 +57,15 @@
   <tr>
     <td class="tg-yw4l">
 
-<ul>
-	<li>In this section we look at how you can write your own functions.</li>
-	<li>In keeping with the overall theme of data analysis, we will focus on numerical and statistical applications mostly.</li>
-</ul>
-<span style="text-decoration:underline;"><strong>Exercises</strong></span>
-<ul>
-	<li>Write a function that accepts one number as an input and returns the square root.</li>
-	<li>Write a function that accepts one number "x" and a value "n"  and returns the "n-"th root of "x"</li>
-	<li>Write a function that simulates the roll of a fair die.</li>
-	<li>Write a function that returns 100 simulations of 100 fair dice rolls.</li>
-</ul>
-
+<ol>
+	<li>What is a Series?</li>
+	<li>Creating a Series</li>
+	<li>Series - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/Notebooks/pandas-series.ipynb" target="_blank">Notebook</a></li>
+	<li>Descriptive Statistics for a Series</li>
+	<li>Order Statistics (numpy)  - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/StatsNotes/orderstats.pdf" target="_blank">HERE</a></li>
+	<li>Testing normality (scipy) - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/StatsNotes/normaltesting.pdf" target="_blank">HERE</a></li>
+	<li>Probability and Statistics Notebook - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/Notebooks/Python-ProbandStats.ipynb" target="_blank">HERE</a></li>
+</ol>
 
 </td>
   </tr>

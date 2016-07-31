@@ -42,7 +42,7 @@
 </style>
 
 <a href="http://PyDataWorkshop.github.io"> Main Menu </a> | <a href="http://PyDataWorkshop.github.io/numpy"> numpy Menu </a> | <a href="http://PyDataWorkshop.github.io/scipy"> scipy Menu </a> | <a href="index.html"> pandas Menu </a>
-<h5>Fundamentals of Python: Exercises</h5>
+<h5>Installing Anaconda Python</h5>
 
 <span style="text-decoration:underline;"><strong>Working with Tables</strong></span>
 
@@ -56,19 +56,21 @@
 <table class="tg">
   <tr>
     <td class="tg-yw4l">
-
 <ul>
-	<li>In this section we look at how you can write your own functions.</li>
-	<li>In keeping with the overall theme of data analysis, we will focus on numerical and statistical applications mostly.</li>
+	<li>Trimmed Mean - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.tmean.html" target="_blank">Docs</a></li>
+	<li>One Sample t-test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.ttest_1samp.html" target="_blank">Docs</a></li>
+	<li>Independent Two Sample t-test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.ttest_ind.html" target="_blank">Docs</a></li>
 </ul>
-<span style="text-decoration:underline;"><strong>Exercises</strong></span>
+<span style="text-decoration:underline;"><strong>Non Parametric Procedures</strong></span>
 <ul>
-	<li>Write a function that accepts one number as an input and returns the square root.</li>
-	<li>Write a function that accepts one number "x" and a value "n"  and returns the "n-"th root of "x"</li>
-	<li>Write a function that simulates the roll of a fair die.</li>
-	<li>Write a function that returns 100 simulations of 100 fair dice rolls.</li>
+	<li>Skewness Test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.skewtest.html#scipy.stats.skewtest" target="_blank">Docs</a></li>
+	<li>Mann whitney U-test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.mstats.mannwhitneyu.html#scipy.stats.mstats.mannwhitneyu" target="_blank">Docs</a></li>
+	<li>Friedman Chi-Square Test for Repeated Measures - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.mstats.friedmanchisquare.html#scipy.stats.mstats.friedmanchisquare" target="_blank">Docs</a></li>
 </ul>
-
+<span style="text-decoration:underline;"><strong>Correlation</strong></span>
+<ul>
+	<li>Kendall Tau - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.mstats.kendalltau.html" target="_blank">Docs</a></li>
+</ul>
 
 </td>
   </tr>

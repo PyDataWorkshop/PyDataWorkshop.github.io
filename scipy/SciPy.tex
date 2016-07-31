@@ -1,0 +1,17 @@
+
+%-----------------------------------------------------------------------------%
+\subsection{SciPy optimization solvers}
+All solvers from scipy.optimize can be separated into 2 categories:
+connected solvers (written in C or Fortran by numerical optimization professionals, e.g. cobyla, slsqp, tnc, lbfgsb)
+unconstrained solvers (or box-bounded, e.g. fminbound, brute and anneal), written in Python by SciPy folk after "Numerical Recipes" or kind of, with some tens of code lines and quality near a student homework.
+Usually interalg and ralg for small- and medium-scaled problems, as well as gsubg for large-scale ones, and, of course, mature IPOPT and algencan show much better results (better final point, and very often much less time elapsed). But if you have a puny problem with small number of variables and without any specialties (ill-conditioned, badly-scaled etc), you could use any one. The scipy solvers were connected from the very beginning of OpenOpt development, when others were absent yet, and still remain in OpenOpt to enable easy comparison for those who want to perform it, mostly estimating pros and cons of migrating from module scipy.optimize to OpenOpt. But we don't recommend to store them in your code - even if they work well now, they don't provide any guarantee of good enough results for slightly modified problems (in future, probably by other programmers), where any specialties mentioned above may raise, as it was observed for many times.
+%-----------------------------------------------------------------------------%
+\subsection{Additional functionality}
+SciPy's core feature set is extended by many other dedicated software tools. For example,
+Plotting. The currently recommended 2-D plotting package is Matplotlib, however, there are many other plotting packages such as HippoDraw, Chaco, and Biggles. Other popular graphics tools include Python Imaging Library and MayaVi (for 3D visualization).
+Advanced Data Analysis. Via RPy, SciPy can interface to the R (programming language) statistical package for advanced data analysis.
+Database. SciPy can interface with PyTables, a hierarchical database package designed to efficiently manage large amounts of data using HDF5.
+Interactive shell. IPython is an interactive environment that offers debugging and coding features similar to what MATLAB offers.
+Symbolic Mathematics. There are several Python libraries--such as PyDSTool Symbolic and SymPy--that offer symbolic mathematics.
+SciPy homepage: http://scipy.org
+Wikipedia entry for SciPy: http://en.wikipedia.org/wiki/SciPy
