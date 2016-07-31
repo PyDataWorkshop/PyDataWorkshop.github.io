@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>correlation</title>
+<title>scipy-statisticsfunctions</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,332 +176,235 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Correlation">Correlation<a class="anchor-link" href="#Correlation">&#182;</a></h1><p>The quantity r, called the linear correlation coefficient, measures the strength and the direction of a linear relationship between two variables. The linear correlation coefficient is sometimes referred to as the Pearson product moment correlation coefficient in honor of its developer Karl Pearson.</p>
+<h1 id="Statistical-functions">Statistical functions<a class="anchor-link" href="#Statistical-functions">&#182;</a></h1><p>Several of these functions have a similar version in scipy.stats.mstats which work for masked arrays.</p>
 <ul>
-<li> The strength of the relation is represented in a numeric value known at the correlation coefficient. 
-
-<li> Recall that correlation describes the strength of a relationship between two numeric variables, and that the <b><i>Pearson product-moment correlation coefficient</b></i> is a measure of the strength of the linear relationship between two variables.
-
-<li> It is referred to as Pearson's correlation or simply as the correlation coefficient. If the relationship between the variables is not linear, then the correlation coefficient does not adequately represent the strength of the relationship between the variables.
-
-<li> The symbol for Pearson's correlation is "$\rho$" when it is measured in the population and <b><i>r</b></i> when it is measured in a sample.
-
-<li> As we will be dealing almost exclusively with samples, we will use <b><i>r</b></i> to to represent Pearson's correlation unless otherwise noted.
-
-<li> Pearson's r can range from -1 to 1. An r of -1 indicates a perfect negative linear relationship between variables, an <b><i>r</b></i> of 0 indicates no linear relationship between variables, and an <b><i>r</b></i> of 1 indicates a perfect positive relationship between variables.
-
-<li> Importantly it is assumed that the relationship in question is supposed to be linear. Some variables will in fact have a non-linear relationship (more on that later)
-</ul><ul>
-<li> 
-The value of r is such that -1 < r < +1.  
-<li> The + and – signs are used for positive linear correlations and negative linear correlations, respectively.  
-<li> <b>Positive correlation:</b>    If x and y have a strong positive linear correlation, r is close
-      to +1.  An r value of exactly +1 indicates a perfect positive fit.   Positive values
-      indicate a relationship between x and y variables such that as values for x increases,
-      values for  y also increase. 
-<li> <b>Negative correlation:</b>   If x and y have a strong negative linear correlation, r is close
-     to -1.  
-    <li>An r value of exactly -1 indicates a perfect negative fit.   Negative values
-     indicate a relationship between x and y such that as values for x increase, values
-     for y decrease. 
- <li> <b>No correlation:</b>  If there is no linear correlation or a weak linear correlation, r is
-     close to 0.  A value near zero means that there is a random, nonlinear relationship
-     between the two variables
-<li> Note that r is a dimensionless quantity; that is, it does not depend on the units 
-     employed.
-<li> A perfect correlation of ± 1 occurs only when the data points all lie exactly on a
-     straight line.  If r = +1, the slope of this line is positive.  If r = -1, the slope of this
-     line is negative.  
+<li><p><strong><em><code>describe(a[, axis])</code> </em></strong>    Computes several descriptive statistics of the passed array.</p>
+</li>
+<li><p><strong><em><code>gmean(a[, axis, dtype])</code> </em></strong>    Compute the geometric mean along the specified axis.</p>
+</li>
+<li><p><strong><em><code>hmean(a[, axis, dtype])</code> </em></strong>    Calculates the harmonic mean along the specified axis.</p>
+</li>
+<li><p><strong><em><code>kurtosis(a[, axis, fisher, bias])</code> </em></strong>    Computes the kurtosis (Fisher or Pearson) of a dataset.</p>
+</li>
+<li><p><strong><em><code>kurtosistest(a[, axis])</code> </em></strong>    Tests whether a dataset has normal kurtosis</p>
+</li>
+<li><p><strong><em><code>mode(a[, axis])</code> </em></strong>    Returns an array of the modal (most common) value in the passed array.</p>
+</li>
+<li><p><strong><em><code>moment(a[, moment, axis])</code> </em></strong>    Calculates the nth moment about the mean for a sample.</p>
+</li>
+<li><p><strong><em><code>normaltest(a[, axis])</code> </em></strong>    Tests whether a sample differs from a normal distribution.</p>
+</li>
+<li><p><strong><em><code>skew(a[, axis, bias])</code> </em></strong>    Computes the skewness of a data set.</p>
+</li>
+<li><p><strong><em><code>skewtest(a[, axis])</code> </em></strong>    Tests whether the skew is different from the normal distribution.</p>
+</li>
+<li><p><strong><em><code>tmean(a[, limits, inclusive])</code> </em></strong>    Compute the trimmed mean.</p>
+</li>
+<li><p><strong><em><code>tvar(a[, limits, inclusive])</code> </em></strong>    Compute the trimmed variance</p>
+</li>
+<li><p><strong><em><code>tmin(a[, lowerlimit, axis, inclusive])</code> </em></strong>    Compute the trimmed minimum</p>
+</li>
+<li><p><strong><em><code>tmax(a[, upperlimit, axis, inclusive])</code> </em></strong>    Compute the trimmed maximum</p>
+</li>
+<li><p><strong><em><code>tstd(a[, limits, inclusive])</code> </em></strong>    Compute the trimmed sample standard deviation</p>
+</li>
+<li><p><strong><em><code>tsem(a[, limits, inclusive])</code> </em></strong>    Compute the trimmed standard error of the mean.</p>
+</li>
+<li><p><strong><em><code>nanmean(x[, axis])</code> </em></strong>    Compute the mean over the given axis ignoring nans.</p>
+</li>
+<li><p><strong><em><code>nanstd(x[, axis, bias])</code> </em></strong>    Compute the standard deviation over the given axis, ignoring nans.</p>
+</li>
+<li><p><strong><em><code>nanmedian(x[, axis])</code> </em></strong>    Compute the median along the given axis ignoring nan values.</p>
+</li>
+<li><p><strong><em><code>variation(a[, axis])</code> </em></strong>    Computes the coefficient of variation, the ratio of the biased standard deviation to the mean.</p>
+</li>
+<li><p><strong><em><code>cumfreq(a[, numbins, defaultreallimits, weights])</code> </em></strong>    Returns a cumulative frequency histogram, using the histogram function.</p>
+</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Test for Significance</span>
-<span class="n">Getting</span> <span class="n">a</span> <span class="n">correlation</span> <span class="n">coefficient</span> <span class="ow">is</span> <span class="n">generally</span> <span class="n">only</span> <span class="n">half</span> <span class="n">the</span> <span class="n">story</span><span class="p">;</span> <span class="n">you</span> <span class="n">will</span> <span class="n">want</span> <span class="n">to</span> <span class="n">know</span> <span class="k">if</span> <span class="n">the</span> <span class="n">relationship</span> <span class="ow">is</span> <span class="n">significant</span><span class="o">.</span> <span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">more</span> <span class="nb">complex</span> <span class="n">command</span> <span class="n">called</span> \<span class="n">texttt</span><span class="p">{</span>\<span class="n">textbf</span><span class="p">{</span><span class="n">cor</span><span class="o">.</span><span class="n">test</span><span class="p">()}}</span><span class="o">.</span> <span class="n">This</span> <span class="n">command</span> <span class="n">additionally</span> <span class="n">provides</span> <span class="n">a</span> <span class="n">hypothesis</span> <span class="n">test</span> <span class="k">for</span> <span class="n">the</span> <span class="n">correlation</span> <span class="n">estimate</span><span class="o">.</span> <span class="n">The</span> <span class="n">null</span> <span class="ow">and</span> <span class="n">alternative</span> <span class="n">hypotheses</span> <span class="n">are</span> <span class="k">as</span> <span class="n">follows</span><span class="o">.</span>
-
-<span class="p">[</span><span class="n">Ho</span><span class="p">]</span> <span class="p">:</span> <span class="n">The</span> <span class="n">correlation</span> <span class="n">coefficient</span> <span class="k">for</span> <span class="n">the</span> <span class="n">population</span> <span class="n">of</span> <span class="n">values</span> <span class="ow">is</span> <span class="n">zero</span><span class="o">.</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">No</span> <span class="n">linear</span> <span class="n">relationship</span><span class="o">.</span><span class="p">)</span>
-<span class="p">[</span><span class="n">Ha</span><span class="p">]</span> <span class="p">:</span> <span class="n">The</span> <span class="n">coefficient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">zero</span><span class="o">.</span> <span class="p">(</span><span class="n">Linear</span> <span class="n">relationship</span> <span class="n">exists</span><span class="o">.</span><span class="p">)</span>
-</pre></div>
 
 </div>
 </div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="n">source</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Spearman-and-Kendall-Correlation-Coefficients">Spearman and Kendall Correlation Coefficients<a class="anchor-link" href="#Spearman-and-Kendall-Correlation-Coefficients">&#182;</a></h4><p>Non parametric statistics are statistics that do not require any special assumptions (i.e. the assumption of normality).</p>
-<p>The Spearman's rank-order and Kendall Tau correlation coefficients 
-are the <b><i>nonparametric</b>&lt;/i&gt; version of the Pearson product-moment correlation. Both methods measure the strength of association between two <b><i>ranked</b>&lt;/i&gt; (ordinal) variables. The coefficients are interpreted the same way.</p>
+<ul>
+<li><p><strong><em><code>variation(a[, axis])</code> </em></strong>    Computes the coefficient of variation, the ratio of the biased standard deviation to the mean.</p>
+</li>
+<li><p><strong><em><code>cumfreq(a[, numbins, defaultreallimits, weights])</code> </em></strong>    Returns a cumulative frequency histogram, using the histogram function.</p>
+</li>
+<li><p><strong><em><code>histogram2(a, bins)</code></em></strong>    Compute histogram using divisions in bins.</p>
+</li>
+<li><p><strong><em><code>histogram(a[, numbins, defaultlimits, ...])</code></em></strong>    Separates the range into several bins and returns the number of instances in each bin.</p>
+</li>
+<li><p><strong><em><code>itemfreq(a)</code></em></strong>    Returns a 2-D array of item frequencies.</p>
+</li>
+<li><p><strong><em><code>percentileofscore(a, score[, kind])</code> </em></strong>    The percentile rank of a score relative to a list of scores.</p>
+</li>
+<li><p><strong><em><code>scoreatpercentile(a, per[, limit, ...])</code> </em></strong>    Calculate the score at a given percentile of the input sequence.</p>
+</li>
+<li><p><strong><em><code>relfreq(a[, numbins, defaultreallimits, weights])</code> </em></strong>    Returns a relative frequency histogram, using the histogram function.</p>
+</li>
+</ul>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Spearman Correlation Coefficient</span>
-
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="o">*</span>
-<span class="n">spearmanr</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>SpearmanrResult(correlation=0.82078268166812329, pvalue=0.088587005313543812)</pre>
-</div>
-
-</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p><strong><em><code>binned_statistic(x, values[, statistic, ...])</code> </em></strong>    Compute a binned statistic for a set of data.</p>
+</li>
+<li><p><strong><em><code>binned_statistic_2d(x, y, values[, ...])</code> </em></strong>    Compute a bidimensional binned statistic for a set of data.</p>
+</li>
+<li><p><strong><em><code>binned_statistic_dd(sample, values[, ...])</code> </em></strong>    Compute a multidimensional binned statistic for a set of data.</p>
+</li>
+</ul>
+<ul>
+<li><strong><em><code>sem(a[, axis, ddof])</code> </em></strong>    Calculates the standard error of the mean (or standard error of measurement) of the values in the input array.</li>
+</ul>
 
 </div>
 </div>
-
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234321</span><span class="p">)</span>
-<span class="n">x2n</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">y2n</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p><strong><em><code>zmap(scores, compare[, axis, ddof])</code> </em></strong>    Calculates the relative z-scores.</p>
+</li>
+<li><p><strong><em><code>zscore(a[, axis, ddof])</code> </em></strong>    Calculates the z score of each value in the sample, relative to the sample mean and standard deviation.</p>
+</li>
+<li><p><strong><em><code>sigmaclip(a[, low, high])</code> </em></strong>    Iterative sigma-clipping of array elements.</p>
+</li>
+<li><p><strong><em><code>threshold(a[, threshmin, threshmax, newval])</code> </em></strong>    Clip array to a given value.</p>
+</li>
+<li><p><strong><em><code>trimboth(a, proportiontocut[, axis])</code> </em></strong>    Slices off a proportion of items from both ends of an array.</p>
+</li>
+<li><p><strong><em><code>trim1(a, proportiontocut[, tail])</code> </em></strong>    Slices off a proportion of items from ONE end of the passed array distribution.</p>
+</li>
+<li><p><strong><em>``f_oneway(</em>args)``*</strong>    Performs a 1-way ANOVA.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong><em><code>ttest_1samp(a, popmean[, axis])</code> </em></strong>    Calculates the T-test for the mean of ONE group of scores.</p>
+</li>
+<li><p><strong><em><code>ttest_ind(a, b[, axis, equal_var])</code> </em></strong>    Calculates the T-test for the means of TWO INDEPENDENT samples of scores.</p>
+</li>
+<li><p><strong><em><code>ttest_rel(a, b[, axis])</code> </em></strong>    Calculates the T-test on TWO RELATED samples of scores, a and b.</p>
+</li>
+<li><p><strong><em><code>kstest(rvs, cdf[, args, N, alternative, mode])</code> </em></strong>    Perform the Kolmogorov-Smirnov test for goodness of fit.</p>
+</li>
+<li><p><strong><em><code>chisquare(f_obs[, f_exp, ddof, axis])</code> </em></strong>    Calculates a one-way chi square test.</p>
+</li>
+<li><p><strong><em><code>power_divergence(f_obs[, f_exp, ddof, axis, ...])</code> </em></strong>    Cressie-Read power divergence statistic and goodness of fit test.</p>
+</li>
+<li><p><strong><em><code>ks_2samp(data1, data2)</code></em></strong>    Computes the Kolmogorov-Smirnov statistic on 2 samples.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong><em>``bartlett(</em>args)``*</strong>    Perform Bartlett’s test for equal variances</p>
+</li>
+<li><p><strong><em>``levene(</em>args, </strong>kwds)``***    Perform Levene test for equal variances.</p>
+</li>
+<li><p><strong><em><code>shapiro(x[, a, reta])</code> </em></strong>    Perform the Shapiro-Wilk test for normality.</p>
+</li>
+<li><p><strong><em><code>anderson(x[, dist])</code> </em></strong>    Anderson-Darling test for data coming from a particular distribution</p>
+</li>
+<li><p><strong><em><code>anderson_ksamp(samples[, midrank])</code> </em></strong>    The Anderson-Darling test for k-samples.</p>
+</li>
+</ul>
 
 </div>
 </div>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x2n</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Correlation-and-Regression-Procedures">Correlation and Regression Procedures<a class="anchor-link" href="#Correlation-and-Regression-Procedures">&#182;</a></h3><ul>
+<li><p><strong><em><code>pearsonr(x, y)</code></em></strong>    Calculates a Pearson correlation coefficient and the p-value for testing non-correlation.</p>
+</li>
+<li><p><strong><em><code>spearmanr(a[, b, axis])</code> </em></strong>    Calculates a Spearman rank-order correlation coefficient and the p-value to test for non-correlation.</p>
+</li>
+<li><p><strong><em><code>pointbiserialr(x, y)</code></em></strong>    Calculates a point biserial correlation coefficient and the associated p-value.</p>
+</li>
+<li><p><strong><em><code>kendalltau(x, y[, initial_lexsort])</code> </em></strong>    Calculates Kendall’s tau, a correlation measure for ordinal data.</p>
+</li>
+<li><p><strong><em><code>linregress(x[, y])</code> </em></strong>    Calculate a regression line</p>
+</li>
+</ul>
 
 </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>SpearmanrResult(correlation=0.059969996999699973, pvalue=0.55338590803773591)
-SpearmanrResult(correlation=0.059969996999699973, pvalue=0.55338590803773591)
-</pre>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rho</span><span class="p">,</span> <span class="n">pval</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="p">,</span><span class="n">y2n</span><span class="p">)</span>
-<span class="n">rho</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Non---Parametric-Procedures">Non - Parametric Procedures<a class="anchor-link" href="#Non---Parametric-Procedures">&#182;</a></h3><ul>
+<li><p><strong><em><code>mannwhitneyu(x, y[, use_continuity])</code> </em></strong>    Computes the Mann-Whitney rank test on samples x and y.</p>
+</li>
+<li><p><strong><em><code>tiecorrect(rankvals)</code></em></strong>    Tie correction factor for ties in the Mann-Whitney U and Kruskal-Wallis H tests.</p>
+</li>
+<li><p><strong><em><code>rankdata(a[, method])</code> </em></strong>    Assign ranks to data, dealing with ties appropriately.</p>
+</li>
+<li><p><strong><em><code>ranksums(x, y)</code></em></strong>    Compute the Wilcoxon rank-sum statistic for two samples.</p>
+</li>
+<li><p><strong><em><code>wilcoxon(x[, y, zero_method, correction])</code> </em></strong>    Calculate the Wilcoxon signed-rank test.</p>
+</li>
+<li><p><strong><em><code>binom_test(x[, n, p])</code> </em></strong>    Perform a test that the probability of success is p.</p>
+</li>
+<li><p><strong><em>``kruskal(</em>args)``*</strong>    Compute the Kruskal-Wallis H-test for independent samples</p>
+</li>
+<li><p><strong><em>``friedmanchisquare(</em>args)``*</strong>    Computes the Friedman test for repeated measurements</p>
+</li>
+<li><p><strong><em><code>ansari(x, y)</code></em></strong>    Perform the Ansari-Bradley test for equal scale parameters</p>
+</li>
+</ul>
 
 </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 1.        ,  0.05997   ,  0.18569457,  0.06258626],
-       [ 0.05997   ,  1.        ,  0.110003  ,  0.02534653],
-       [ 0.18569457,  0.110003  ,  1.        ,  0.03488749],
-       [ 0.06258626,  0.02534653,  0.03488749,  1.        ]])</pre>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pval</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Other-Statistical-Procedures">Other Statistical Procedures<a class="anchor-link" href="#Other-Statistical-Procedures">&#182;</a></h3><ul>
+<li><p><strong><em>``obrientransform(</em>args)``*</strong>    Computes the O’Brien transform on input data (any number of arrays).</p>
+</li>
+<li><p><strong><em><code>signaltonoise(a[, axis, ddof])</code> </em></strong>    The signal-to-noise ratio of the input data.</p>
+</li>
+<li><p><strong><em><code>bayes_mvs(data[, alpha])</code> </em></strong>    Bayesian confidence intervals for the mean, var, and std.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong><em>``fligner(</em>args, </strong>kwds)``***    Perform Fligner’s test for equal variances.</p>
+</li>
+<li><p><strong><em><code>mood(x, y[, axis])</code> </em></strong>    Perform Mood’s test for equal scale parameters.</p>
+</li>
+<li><p><strong><em><code>boxcox(x[, lmbda, alpha])</code> </em></strong>    Return a positive dataset transformed by a Box-Cox power transformation.</p>
+</li>
+<li><p><strong><em><code>boxcox_normmax(x[, brack, method])</code> </em></strong>    Compute optimal Box-Cox transform parameter for input data.</p>
+</li>
+<li><p><strong><em><code>boxcox_llf(lmb, data)</code></em></strong>    The boxcox log-likelihood function.</p>
+</li>
+<li><p><strong><em><code>entropy(pk[, qk, base])</code> </em></strong>    Calculate the entropy of a distribution for given probability values.</p>
+</li>
+</ul>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.        ,  0.55338591,  0.06435364,  0.53617935],
-       [ 0.55338591,  0.        ,  0.27592895,  0.80234077],
-       [ 0.06435364,  0.27592895,  0.        ,  0.73039992],
-       [ 0.53617935,  0.80234077,  0.73039992,  0.        ]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rho</span><span class="p">,</span> <span class="n">pval</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y2n</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">rho</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 1.        ,  0.05997   ,  0.18569457,  0.06258626],
-       [ 0.05997   ,  1.        ,  0.110003  ,  0.02534653],
-       [ 0.18569457,  0.110003  ,  1.        ,  0.03488749],
-       [ 0.06258626,  0.02534653,  0.03488749,  1.        ]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Kendall Correlation Coefficient</span>
-
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">tau</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p_value</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>-0.471404520791
-0.248213091575
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;same&quot;</span><span class="p">)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;full&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([ 0.5,  2. ,  3.5,  3. ,  0. ])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>correlation</title>
+<title>scipy-testingnormality</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -176,72 +176,45 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Correlation">Correlation<a class="anchor-link" href="#Correlation">&#182;</a></h1><p>The quantity r, called the linear correlation coefficient, measures the strength and the direction of a linear relationship between two variables. The linear correlation coefficient is sometimes referred to as the Pearson product moment correlation coefficient in honor of its developer Karl Pearson.</p>
-<ul>
-<li> The strength of the relation is represented in a numeric value known at the correlation coefficient. 
-
-<li> Recall that correlation describes the strength of a relationship between two numeric variables, and that the <b><i>Pearson product-moment correlation coefficient</b></i> is a measure of the strength of the linear relationship between two variables.
-
-<li> It is referred to as Pearson's correlation or simply as the correlation coefficient. If the relationship between the variables is not linear, then the correlation coefficient does not adequately represent the strength of the relationship between the variables.
-
-<li> The symbol for Pearson's correlation is "$\rho$" when it is measured in the population and <b><i>r</b></i> when it is measured in a sample.
-
-<li> As we will be dealing almost exclusively with samples, we will use <b><i>r</b></i> to to represent Pearson's correlation unless otherwise noted.
-
-<li> Pearson's r can range from -1 to 1. An r of -1 indicates a perfect negative linear relationship between variables, an <b><i>r</b></i> of 0 indicates no linear relationship between variables, and an <b><i>r</b></i> of 1 indicates a perfect positive relationship between variables.
-
-<li> Importantly it is assumed that the relationship in question is supposed to be linear. Some variables will in fact have a non-linear relationship (more on that later)
-</ul><ul>
-<li> 
-The value of r is such that -1 < r < +1.  
-<li> The + and – signs are used for positive linear correlations and negative linear correlations, respectively.  
-<li> <b>Positive correlation:</b>    If x and y have a strong positive linear correlation, r is close
-      to +1.  An r value of exactly +1 indicates a perfect positive fit.   Positive values
-      indicate a relationship between x and y variables such that as values for x increases,
-      values for  y also increase. 
-<li> <b>Negative correlation:</b>   If x and y have a strong negative linear correlation, r is close
-     to -1.  
-    <li>An r value of exactly -1 indicates a perfect negative fit.   Negative values
-     indicate a relationship between x and y such that as values for x increase, values
-     for y decrease. 
- <li> <b>No correlation:</b>  If there is no linear correlation or a weak linear correlation, r is
-     close to 0.  A value near zero means that there is a random, nonlinear relationship
-     between the two variables
-<li> Note that r is a dimensionless quantity; that is, it does not depend on the units 
-     employed.
-<li> A perfect correlation of ± 1 occurs only when the data points all lie exactly on a
-     straight line.  If r = +1, the slope of this line is positive.  If r = -1, the slope of this
-     line is negative.  
+<h1 id="scipy---Testing-Normality">scipy - Testing Normality<a class="anchor-link" href="#scipy---Testing-Normality">&#182;</a></h1><ul>
+<li> ``normaltest()`` returns a 2-tuple of the chi-squared statistic, and the associated p-value. 
+<li> Given the null hypothesis that x came from a normal distribution, the p-value represents the probability that a chi-squared statistic that large (or larger) would be seen.
+<li> If the p-val is very small, it means it is unlikely that the data came from a normal distribution. 
+<li>Traditionally, in statistics, you need a p-value of less than 0.05 to reject the null hypothesis. 
+<li> For this next example , with data set ``x``, we would <b>fail to reject</b> the null hypothesis (see the p-value at the end).
 </ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Test for Significance</span>
-<span class="n">Getting</span> <span class="n">a</span> <span class="n">correlation</span> <span class="n">coefficient</span> <span class="ow">is</span> <span class="n">generally</span> <span class="n">only</span> <span class="n">half</span> <span class="n">the</span> <span class="n">story</span><span class="p">;</span> <span class="n">you</span> <span class="n">will</span> <span class="n">want</span> <span class="n">to</span> <span class="n">know</span> <span class="k">if</span> <span class="n">the</span> <span class="n">relationship</span> <span class="ow">is</span> <span class="n">significant</span><span class="o">.</span> <span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">more</span> <span class="nb">complex</span> <span class="n">command</span> <span class="n">called</span> \<span class="n">texttt</span><span class="p">{</span>\<span class="n">textbf</span><span class="p">{</span><span class="n">cor</span><span class="o">.</span><span class="n">test</span><span class="p">()}}</span><span class="o">.</span> <span class="n">This</span> <span class="n">command</span> <span class="n">additionally</span> <span class="n">provides</span> <span class="n">a</span> <span class="n">hypothesis</span> <span class="n">test</span> <span class="k">for</span> <span class="n">the</span> <span class="n">correlation</span> <span class="n">estimate</span><span class="o">.</span> <span class="n">The</span> <span class="n">null</span> <span class="ow">and</span> <span class="n">alternative</span> <span class="n">hypotheses</span> <span class="n">are</span> <span class="k">as</span> <span class="n">follows</span><span class="o">.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
-<span class="p">[</span><span class="n">Ho</span><span class="p">]</span> <span class="p">:</span> <span class="n">The</span> <span class="n">correlation</span> <span class="n">coefficient</span> <span class="k">for</span> <span class="n">the</span> <span class="n">population</span> <span class="n">of</span> <span class="n">values</span> <span class="ow">is</span> <span class="n">zero</span><span class="o">.</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">No</span> <span class="n">linear</span> <span class="n">relationship</span><span class="o">.</span><span class="p">)</span>
-<span class="p">[</span><span class="n">Ha</span><span class="p">]</span> <span class="p">:</span> <span class="n">The</span> <span class="n">coefficient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">zero</span><span class="o">.</span> <span class="p">(</span><span class="n">Linear</span> <span class="n">relationship</span> <span class="n">exists</span><span class="o">.</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">normaltest</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NormaltestResult(statistic=3.2168450598400073, pvalue=0.20020317963788845)</pre>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="n">source</span><span class="p">]</span>
-</pre></div>
 
 </div>
+
 </div>
 </div>
 
@@ -251,22 +224,23 @@ The value of r is such that -1 < r < +1.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Spearman-and-Kendall-Correlation-Coefficients">Spearman and Kendall Correlation Coefficients<a class="anchor-link" href="#Spearman-and-Kendall-Correlation-Coefficients">&#182;</a></h4><p>Non parametric statistics are statistics that do not require any special assumptions (i.e. the assumption of normality).</p>
-<p>The Spearman's rank-order and Kendall Tau correlation coefficients 
-are the <b><i>nonparametric</b>&lt;/i&gt; version of the Pearson product-moment correlation. Both methods measure the strength of association between two <b><i>ranked</b>&lt;/i&gt; (ordinal) variables. The coefficients are interpreted the same way.</p>
-
+<ul>
+<li> For this next example , with data set ``y``, we would <b>reject</b> the null hypothesis.
+<li> In other words, we can not assume normality.
+</ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Spearman Correlation Coefficient</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="o">*</span>
-<span class="n">spearmanr</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">normaltest</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -277,224 +251,11 @@ are the <b><i>nonparametric</b>&lt;/i&gt; version of the Pearson product-moment 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>SpearmanrResult(correlation=0.82078268166812329, pvalue=0.088587005313543812)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234321</span><span class="p">)</span>
-<span class="n">x2n</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">y2n</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x2n</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>SpearmanrResult(correlation=0.059969996999699973, pvalue=0.55338590803773591)
-SpearmanrResult(correlation=0.059969996999699973, pvalue=0.55338590803773591)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rho</span><span class="p">,</span> <span class="n">pval</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="p">,</span><span class="n">y2n</span><span class="p">)</span>
-<span class="n">rho</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 1.        ,  0.05997   ,  0.18569457,  0.06258626],
-       [ 0.05997   ,  1.        ,  0.110003  ,  0.02534653],
-       [ 0.18569457,  0.110003  ,  1.        ,  0.03488749],
-       [ 0.06258626,  0.02534653,  0.03488749,  1.        ]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pval</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.        ,  0.55338591,  0.06435364,  0.53617935],
-       [ 0.55338591,  0.        ,  0.27592895,  0.80234077],
-       [ 0.06435364,  0.27592895,  0.        ,  0.73039992],
-       [ 0.53617935,  0.80234077,  0.73039992,  0.        ]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rho</span><span class="p">,</span> <span class="n">pval</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">x2n</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y2n</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">rho</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[ 1.        ,  0.05997   ,  0.18569457,  0.06258626],
-       [ 0.05997   ,  1.        ,  0.110003  ,  0.02534653],
-       [ 0.18569457,  0.110003  ,  1.        ,  0.03488749],
-       [ 0.06258626,  0.02534653,  0.03488749,  1.        ]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Kendall Correlation Coefficient</span>
-
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">tau</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p_value</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>-0.471404520791
-0.248213091575
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;same&quot;</span><span class="p">)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;full&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([ 0.5,  2. ,  3.5,  3. ,  0. ])</pre>
+<pre>NormaltestResult(statistic=20.324734409290578, pvalue=3.8595795795312309e-05)</pre>
 </div>
 
 </div>
@@ -509,6 +270,37 @@ SpearmanrResult(correlation=0.059969996999699973, pvalue=0.55338590803773591)
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h4><ul>
+<li>Perform the normality test for datasets x1 and x2.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">normaltest</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">normaltest</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 </pre></div>
 
 </div>
