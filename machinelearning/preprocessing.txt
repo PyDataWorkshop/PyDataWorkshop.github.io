@@ -42,7 +42,7 @@
 </style>
 
 <a href="http://PyDataWorkshop.github.io"> Main Menu </a> | <a href="http://PyDataWorkshop.github.io/numpy"> numpy Menu </a> | <a href="http://PyDataWorkshop.github.io/scipy"> scipy Menu </a> | <a href="index.html"> pandas Menu </a>
-<h5>Installing Anaconda Python</h5>
+<h5>Pandas: Working with pivot tables</h5>
 
 <span style="text-decoration:underline;"><strong>Working with Tables</strong></span>
 
@@ -56,24 +56,17 @@
 <table class="tg">
   <tr>
     <td class="tg-yw4l">
-<a href="https://pythondatalab.files.wordpress.com/2015/04/anaconda_logo_web.png"><img class="  wp-image-143 aligncenter" src="https://pythondatalab.files.wordpress.com/2015/04/anaconda_logo_web.png" alt="anaconda_logo_web" width="205" height="143" /></a>
 
-Anaconda is a free collection of powerful packages for Python that enables large-scale data management, analysis, and visualization for Business Intelligence, Scientific Analysis, Engineering, Machine Learning, and more.
-
-<span style="text-decoration:underline;"><strong>Download Anaconda from Continuum Analytics </strong></span>
 <ul>
-	<li>Python 2.7 Version - <a href="http://continuum.io/downloads" target="_blank">Here</a> <em>(download takes a few minutes)</em></li>
-	<li>Try out the "Other Graphical Installers"</li>
-	<li><del>Help File to get set up for Workshop <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/Helpnotes/InstallingAnacondaPython.pdf" target="_blank">HERE</a></del></li>
-	<li><del>Jupyter - <a href="https://jupyter.org/" target="_blank">Here</a></del></li>
-	<li><a href="https://pythonhosted.org/six/" target="_blank">Six </a> - Library for Python 2 and 3 Compatibility</li>
-	<li> "pip install jinja2 tornado pyzmq"  (From old " IJulia ") -<a href="https://dl.dropboxusercontent.com/u/6044937/PyData/Installing%20IJulia.pdf" target="_blank"> HERE</a></li>
+	<li><a href="https://dl.dropboxusercontent.com/u/6044937/PyData/SKL13-Transformation.pdf" target="_blank">Data Scaling and Transformation</a></li>
 </ul>
-<span style="text-decoration:underline;"><strong>More Resources </strong></span>
-<ul>
-	<li>Getting Started with Anaconda - <a href="https://store.continuum.io/static/img/Anaconda-Quickstart.pdf" target="_blank">HERE</a></li>
-	<li>Python Cheat Sheet - <a href="https://dl.dropboxusercontent.com/u/6044937/PythonVideos/Python%20Notes.pdf" target="_blank">HERE</a></li>
-</ul>
+<ol>
+	<li>Standardization</li>
+	<li>Normalization</li>
+	<li>Binarization</li>
+	<li>Missing Values</li>
+	<li>Encoding Categorical Variables</li>
+</ol>
 
 </td>
   </tr>
