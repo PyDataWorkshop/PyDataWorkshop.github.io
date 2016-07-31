@@ -42,8 +42,9 @@
 </style>
 
 <a href="http://PyDataWorkshop.github.io"> Main Menu </a> | <a href="http://PyDataWorkshop.github.io/numpy"> numpy Menu </a> | <a href="http://PyDataWorkshop.github.io/scipy"> scipy Menu </a> | <a href="index.html"> pandas Menu </a>
-<h5>WHAT IS PANDAS?</h5>
+<h5>Pandas: Working with pivot tables</h5>
 
+<span style="text-decoration:underline;"><strong>Numpy Arrays</strong></span>
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -55,12 +56,16 @@
 <table class="tg">
   <tr>
     <td class="tg-yw4l">
+
 <ul>
-	<br><li>pandas documentation on "Split Apply Combine" - <a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html" target="_blank">HERE</a></li>
-	<br><li>pandas - group_by example - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandasGroupBy.pdf" target="_blank">HERE</a> (data: <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/TradeoffData.csv" target="_blank">tradeoff.csv</a>)</li>
-	<br><li>pandas - diamonds example -HERE (data: <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/diamonds.csv" target="_blank">diamonds.csv</a>)</li>
-	<br><li>The Chicago Salaries Example - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandas/ChicagoSalaries/ChicagoSalaries.pdf" target="_blank">Here</a> (Data set : <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/chicago.csv" target="_blank">chicago.csv</a> )
+	<li> Constructing a numpy array - Here </li>
 </ul>
+<span style="text-decoration:underline;"><strong>Special Arrays</strong></span>
+<ul>
+	<li>In this section we also look at how to set up "special arrays". for example an array of 1s or 0s only.</li>
+	<li>It seems like a strange thing to need to do something like this, but it is often really useful.</li>
+</ul>
+
 </td>
   </tr>
 </table>
