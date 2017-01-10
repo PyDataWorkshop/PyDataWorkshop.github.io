@@ -1,0 +1,366 @@
+ \documentclass[a4paper,12pt]{article}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \usepackage{eurosym}
+ \usepackage{vmargin}
+ \usepackage{amsmath}
+ \usepackage{multicol}
+ \usepackage{graphics}
+ \usepackage{enumerate}
+ \usepackage{epsfig}
+ \usepackage{framed}
+ \usepackage{subfigure}
+ \usepackage{fancyhdr}
+ 
+ \setcounter{MaxMatrixCols}{10}
+ %TCIDATA{OutputFilter=LATEX.DLL}
+ %TCIDATA{Version=5.00.0.2570}
+ %TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+ %TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+ %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+ %TCIDATA{Language=American English}
+ 
+ %\pagestyle{fancy}
+ \setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+ %\lhead{MA4413 2013} \rhead{Mr. Kevin O'Brien}
+ %\chead{Midterm Assessment 1 }
+ %\input{tcilatex}
+ 
+ \begin{document}
+\tableofcontents
+\section{Using Scikit-Learn}
+\subsection{Data Loading}
+%\newpage
+%\subsection{Algorithm Development}
+
+\begin{itemize}
+\item Scikit-Learn has implemented all the basic algorithms of machine learning. 
+\item Let’s take a look at some of them.
+\item First of all, the data should be loaded into memory, so that we could work with it. 
+\item The Scikit-Learn library uses NumPy arrays in its implementation, so we will use NumPy to load \texttt{*.csv} files.
+
+\item Let’s download one of the datasets from the UCI Machine Learning Repository.
+\end{itemize} 
+
+\begin{framed}
+	\begin{verbatim}
+	
+	import numpy as np
+	import urllib
+	
+	# url with dataset
+	# May have to retype into single lien
+	url = "http://archive.ics.uci.edu/ml/machine-learning-databases/
+	    pima-indians-diabetes/ pima-indians-diabetes.data"
+	
+	# download the file
+	raw_data = urllib.urlopen(url)
+	
+	# load the CSV file as a numpy matrix
+	dataset = np.loadtxt(raw_data, delimiter=",")
+	# separate the data from the target attributes
+	X = dataset[:,0:7]
+	y = dataset[:,8]
+	\end{verbatim}
+\end{framed}
+%========================%
+We will work with this dataset in all examples, namely, with the X feature-object matrix and values of the y target variable.
+%==============================================================================================================%
+\subsection{About the PIMA data set}
+The Pima Indian diabetes database, donated by Vincent Sigillito (John Hopkins University), is a collection of medical diagnostic reports of 768 examples from a population living near Phoenix, Arizona, USA. 
+ The samples consist of examples with 8 attribute values and one of the two possible outcomes, namely whether the patient is tested positive for diabetes (indicated by output one) or not (indicated by two). The database now available in the repository has 512 examples in the training set and 256 examples in the test set.
+
+\subsubsection*{Attribute Information}
+There are nine variables in this data set
+\begin{enumerate}
+
+	
+	\item 	 Number of times pregnant 
+	\item 	 Plasma glucose concentration a 2 hours in an oral glucose tolerance test 
+	\item 	 Diastolic blood pressure (mm Hg) 
+	\item 	 Triceps skin fold thickness (mm) 
+	\item 	 2-Hour serum insulin (mu U/ml) 
+	\item 	 Body mass index (weight in kg/(height in m)$^2$) 
+	\item 	 Diabetes pedigree function 
+	\item 	 Age (years) 
+	\item 	 Class variable (0 or 1)
+	
+\end{enumerate}
+\newpage
+\subsection{Data Normalization}
+\begin{itemize}
+\item The majority of gradient methods (on which almost all machine learning algorithms are based) are highly sensitive to \textit{data scaling}.
+\item Therefore, before running an algorithm, we should perform either normalization, or the so-called standardization. 
+\item Normalization involves replacing nominal features, so that each of them would be in the range from 0 to 1.
+\item  As for standardization, it involves data pre-processing, after which each feature has an average 0 and 1 dispersion. 
+\item The Scikit-Learn library provides ready-made functions for this:
+\end{itemize}
+
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import preprocessing
+	
+	# normalize the data attributes
+		normalized_X = preprocessing.normalize(X)
+	
+	# standardize the data attributes
+	standardized_X = preprocessing.scale(X)
+	\end{verbatim}
+\end{framed}
+
+\newpage
+\subsection{More on Data Normalization and Data Scaling}
+Data scaling is a method used to standardize the range of independent variables or features of data. In data processing, it is also known as data normalization and is generally performed during the data preprocessing step.
+
+Since the range of values of raw data varies widely, in some machine learning algorithms, objective functions will not work properly without normalization[citation needed]. For example, the majority of classifiers calculate the distance between two points by the distance. If one of the features has a broad range of values, the distance will be governed by this particular feature[citation needed]. Therefore, the range of all features should be normalized so that each feature contributes approximately proportionately to the final distance.
+
+Another reason why feature scaling is applied is that gradient descent converges much faster with feature scaling than without it.
+
+\subsubsection{Rescaling}
+The simplest method is rescaling the range of features to scale the range in [0, 1] or [−1, 1]. Selecting the target range depends on the nature of the data. The general formula is given as:
+
+\[ x' = \frac{x - \text{min}(x)}{\text{max}(x)-\text{min}(x)}\]
+where x is an original value, x' is the normalized value. For example, suppose that we have the students' weight data, and the students' weights span [160 pounds, 200 pounds]. To rescale this data, we first subtract 160 from each student's weight and divide the result by 40 (the difference between the maximum and minimum weights).
+
+\subsubsection{Standardization}
+In machine learning, we can handle various types of data, e.g. audio signals and pixel values for image data, and this data can include multiple dimensions. Feature standardization makes the values of each feature in the data have zero-mean (when subtracting the mean in the enumerator) and unit-variance. This method is widely used for normalization in many machine learning algorithms (e.g., support vector machines, logistic regression, and neural networks). 
+
+This is typically done by calculating standard scores. The general method of calculation is to determine the distribution mean and standard deviation for each feature. Next we subtract the mean from each feature. Then we divide the values (mean is already subtracted) of each feature by its standard deviation.
+
+The standard score of a raw score x is
+
+\[z = {x- \mu \over \sigma}\]
+where:
+
+\begin{description}
+\item[$\mu$] is the mean of the population;
+\item[$\sigma$] is the standard deviation of the population.
+\end{description}
+The absolute value of z represents the distance between the raw score and the population mean in units of the standard deviation. z is negative when the raw score is below the mean, positive when above.
+
+\subsubsection{Scaling to unit length}
+Another option that is widely used in machine-learning is to scale the components of a feature vector such that the complete vector has length one. This usually means dividing each component by the Euclidean length of the vector. In some applications (e.g. Histogram features) it can be more practical to use the L1 norm (i.e. Manhattan Distance, City-Block Length or Taxicab Geometry) of the feature vector:
+
+\[ x' = \frac{x}{||x||} \]
+This is especially important if in the following learning steps the Scalar Metric is used as a distance measure.
+%==============================================================================================================%
+\newpage
+\subsection{Feature Selection}
+
+The most important thing in solving a task is the ability to properly choose or even create features. It’s called Feature Selection and Feature Engineering. While Future Engineering is quite a creative process and relies more on intuition and expert knowledge, there are plenty of ready-made algorithms for Feature Selection. Tree algorithms allow to compute the informativeness of features.
+
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import metrics
+	from sklearn.ensemble import ExtraTreesClassifier
+	
+	model = ExtraTreesClassifier()
+	model.fit(X, y)
+	
+	# display the relative importance of each attribute
+	print(model.feature_importances_)
+	\end{verbatim}
+\end{framed}
+%========================%
+All other methods are based on the effective search of subsets of features in order to find the best subset, on which the developed model gives the best quality. One of these search algorithms is the Recursive Feature Elimination Algorithm that is also available in the Scikit-Learn library.
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn.feature_selection import RFE
+	from sklearn.linear_model import LogisticRegression
+	
+	model = LogisticRegression()
+	
+	# create the RFE model and select 3 attributes
+	rfe = RFE(model, 3)
+	rfe = rfe.fit(X, y)
+	
+	# summarize the selection of the attributes
+	print(rfe.support_)
+	print(rfe.ranking_)
+	\end{verbatim}
+\end{framed}
+%==============================================================================================================%
+\newpage
+
+\subsection{Logistic Regression}
+Most often used for solving tasks of classification (binary), but multiclass classification (the so-called one-vs-all method) is also allowed. The advantage of this algorithm is that there’s the probability of belonging to a class for each object at the output.
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import metrics
+	from sklearn.linear_model import LogisticRegression
+	
+	model = LogisticRegression()
+	model.fit(X, y)
+	print(model)
+	
+	# make predictions
+	expected = y
+	predicted = model.predict(X)
+		
+	# summarize the fit of the model
+	print(metrics.classification_report(expected, predicted))
+	print(metrics.confusion_matrix(expected, predicted))
+	\end{verbatim}
+\end{framed}
+%==============================================================================================================%
+\newpage
+\subsection{Naive Bayes}
+Is also one of the most well-known machine learning algorithms, the main task of which is to restore the density of data distribution of the training sample. This method often provides good quality in multiclass classification problems.
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import metrics
+	from sklearn.naive_bayes import GaussianNB
+	
+	model = GaussianNB()
+	model.fit(X, y)
+	print(model)
+	
+	# make predictions
+	expected = y
+	predicted = model.predict(X)
+	
+	# summarize the fit of the model
+	print(metrics.classification_report(expected, predicted))
+	print(metrics.confusion_matrix(expected, predicted))
+	\end{verbatim}
+\end{framed}
+%========================%
+%==============================================================================================================%
+\newpage
+\subsection{k-Nearest Neighbours}
+The kNN (k-Nearest Neighbors) method is often used as part of a more complex classification algorithm. For instance, we can use its estimate as an object’s feature. Sometimes, a simple kNN provides great quality on well-chosen features. When parameters (metrics mostly) are set well, the algorithm often gives good quality in regression problems.
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import metrics
+	from sklearn.neighbors import KNeighborsClassifier
+	
+	# fit a k-nearest neighbor model to the data
+	model = KNeighborsClassifier()
+	model.fit(X, y)
+	print(model)
+	
+	# make predictions
+	expected = y
+	predicted = model.predict(X)
+	
+	# summarize the fit of the model
+	print(metrics.classification_report(expected, predicted))
+	print(metrics.confusion_matrix(expected, predicted))
+	\end{verbatim}
+\end{framed}
+%========================%
+%==============================================================================================================%
+\newpage
+\subsection{Decision Trees}
+Classification and Regression Trees (CART) are often used in problems, in which objects have category features and used for regression and classification problems. The trees are very well suited for multiclass classification.
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import metrics
+	from sklearn.tree import DecisionTreeClassifier
+	
+	# fit a CART model to the data
+	model = DecisionTreeClassifier()
+	model.fit(X, y)
+	print(model)
+	
+	# make predictions
+	expected = y
+	predicted = model.predict(X)
+	
+	# summarize the fit of the model
+	print(metrics.classification_report(expected, predicted))
+	print(metrics.confusion_matrix(expected, predicted))
+	\end{verbatim}
+\end{framed}
+%========================%
+%==============================================================================================================%
+\newpage
+\subsection{Support Vector Machines}
+SVM (Support Vector Machines) is one of the most popular machine learning algorithms used mainly for the classification problem. As well as logistic regression, SVM allows multi-class classification with the help of the one-vs-all method.
+
+\begin{framed}
+	\begin{verbatim}
+	from sklearn import metrics
+	from sklearn.svm import SVC
+	
+	# fit a SVM model to the data
+	model = SVC()
+	model.fit(X, y)
+	print(model)
+	
+	# make predictions
+	expected = y
+	predicted = model.predict(X)
+	
+	# summarize the fit of the model
+	print(metrics.classification_report(expected, predicted))
+	print(metrics.confusion_matrix(expected, predicted))
+	\end{verbatim}
+\end{framed}
+%========================%
+In addition to classification and regression algorithms, Scikit-Learn has a huge number of more complex algorithms, including clustering, and also implemented techniques to create compositions of algorithms, including Bagging and Boosting.
+
+
+%==============================================================================================================%
+\newpage
+
+\subsection{How to Optimize Algorithm Parameters}
+One of the most difficult stages in creating really efficient algorithms is choosing correct parameters. It’s usually easier with experience, but one way or another, we have to do the search. Fortunately, Scikit-Learn provides many implemented functions for this purpose.
+
+As an example, let’s take a look at the selection of the regularization parameter, in which several values are searched in turn:
+
+\begin{framed}
+	\begin{verbatim}
+	import numpy as np
+	from sklearn.linear_model import Ridge
+	from sklearn.grid_search import GridSearchCV
+	
+	# prepare a range of alpha values to test
+	alphas = np.array([1,0.1,0.01,0.001,0.0001,0])
+	
+	# create and fit a ridge regression model, testing each alpha
+	model = Ridge()
+	grid = GridSearchCV(estimator=model, param_grid=dict(alpha=alphas))
+	grid.fit(X, y)
+	print(grid)
+	
+	# summarize the results of the grid search
+	print(grid.best_score_)
+	print(grid.best_estimator_.alpha)
+	\end{verbatim}
+\end{framed}
+%========================%
+Sometimes it is more efficient to randomly select a parameter from the given range, estimate the algorithm quality for this parameter and choose the best one.
+
+\begin{framed}
+	\begin{verbatim}
+	import numpy as np
+	from scipy.stats import uniform as sp_rand
+	from sklearn.linear_model import Ridge
+	from sklearn.grid_search import RandomizedSearchCV
+	
+	# prepare a uniform distribution to sample for the alpha parameter
+	param_grid = {'alpha': sp_rand()}
+	
+	# create and fit a ridge regression model, testing random alpha values
+	model = Ridge()
+	rsearch = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=100)
+	rsearch.fit(X, y)
+	print(rsearch)
+	
+	# summarize the results of the random parameter search
+	print(rsearch.best_score_)
+	print(rsearch.best_estimator_.alpha)
+	\end{verbatim}
+\end{framed}
+%========================%
+We have reviewed the entire process of working with the Scikit-Learn library, except for outputting results back to a file. 
+%Offering you to do this as an exercise, as Python’s (and Scikit-Learn library’s) advantage, in comparison to R, is its excellent documentation.
+
+\end{document}

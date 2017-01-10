@@ -1,0 +1,250 @@
+<!-- ###############################################################################===
+
+\Large
+\textbf{Classification Techniques}
+<ul>
+<li> Different classification techniques can often be compared using the type of decision surface they can learn. <li> The decision surfaces describe for what values of the predictors the model changes its predictions and it can take several different shapes: piece-wise constant, linear, quadratic, vornoi tessellation, \ldots
+<\ul>
+
+
+<!-- ###############################################################################===
+
+\Large
+This next part will introduce three popular classification techniques: 
+<ul>
+<li>[1] Logistic Regression, 
+<li>[2] Discriminant Analysis, 
+<li>[3] Nearest Neighbor.
+<\ul> We will investigate what their strengths and weaknesses are by looking at the decision boundaries they can model. In the following we will use three synthetic datasets that we adopted from this scikit-learn example.
+
+<!-- ###############################################################################===
+
+	\textbf{Synthetic Data Sets}
+\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{sklcass/sklclass12}
+
+\end{figure}
+
+<!-- ###############################################################################===
+
+\textbf{Synthetic Data Sets}
+<ul>
+<li> The task in each of the above examples is to separate the red from the blue points. 
+<li> Testing data points are plotted in lighter color. 
+<li> The left example contains two intertwined moon sickles; the middle example is a circle of blues framed by a ring of reds; and the right example shows two linearly separable gaussian blobs.
+<\ul>
+
+
+
+<!-- ###############################################################################===
+
+		\frametitle{Method 1: Logistic Regression}
+\textbf{Logistic Regression}
+<ul>
+<li> Logistic regression can be viewed as an extension of linear regression to classification problems. <li> One of the limitations of linear regression is that it cannot provide class probability estimates. 
+<li> This is often useful, for example, when we want to inspect manually the most fraudulent cases. 
+<li> Basically, we would like to constrain the predictions of the model to the range $[0,1]$ so that we can interpret them as probability estimates. 
+<li> In Logistic Regression, we use the logit function to clamp predictions from the range $[-infty,infty]$ to $[0,1]$. 
+<\ul>
+
+
+<!-- ###############################################################################===
+
+		\frametitle{Method 1: Logistic Regression}
+	\textbf{Logistic Transformation}
+	\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{sklcass/sklclass13}
+
+\end{figure}
+
+
+<!-- ###############################################################################===
+
+		\frametitle{Method 1: Logistic Regression}
+	\Large
+	\textbf{Logistic Regression}
+<ul>
+<li> Logistic regression is available in scikit-learn via the class <b><tt>sklearn.linear\_model.LogisticRegression}. 
+<li> It uses liblinear, so it can be used for problems involving millions of samples and hundred of thousands of predictors. 
+<li> Lets see how Logistic Regression does on our three toy datasets.
+<\ul>
+
+
+
+
+<!-- ###############################################################################===
+
+		\frametitle{Method 1: Logistic Regression}
+	<pre>
+		<code>
+from sklearn.linear_model import LogisticRegression
+
+est = LogisticRegression()
+plot_datasets(est)
+	<\code>
+<\pre>
+
+
+<!-- ###############################################################################===
+
+		\frametitle{Method 1: Logistic Regression}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.1\linewidth]{sklcass/sklclass21}
+		
+	\end{figure}
+
+<!-- ###############################################################################===
+
+	\frametitle{Method 1: Logistic Regression}
+	\Large
+	\textbf{Model Appraisal}
+<ul>
+<li>	As we can see, a linear decision boundary is not a poor approximation for the moon datasets, although we fail to separate the two tips of the sickles in the center. 
+<li> The cicles dataset, on the other hand, is not well suited for a linear decision boundary. 
+<\ul>
+
+<!-- ###############################################################################===
+
+	\frametitle{Method 1: Logistic Regression}
+		\Large
+		\textbf{Model Appraisal}
+<ul>
+		
+	<li> The error rate of 0.68 is in fact worse than random guessing. <li> For the linear dataset we picked in fact the correct model class — the error rate of 10\ is due to the noise component in our data. 
+<li> The gradient shows you the probability of class membership — white shows you that the model is very uncertain about its prediction.
+<\ul>
+
+
+
+<!-- ###############################################################################===
+
+\frametitle{Method 2: Linear Discriminant Analysis}
+\Large
+\textbf{Linear Discriminant Analysis}
+<ul>
+<li> Linear discriminant Analysis (LDA) is another popular technique which shares some similarities with Logistic Regression. 
+<li> LDA too finds linear boundary between the two classes where points on side are classified as one class and those on the other as classified as the other class.
+<\ul>
+
+
+
+<!-- ###############################################################################===
+
+\frametitle{Method 2: Linear Discriminant Analysis}	
+\Large
+<pre>
+<code>
+
+from sklearn.lda import LDA
+
+est = LDA()
+plot_datasets(est)
+		<\code>
+	<\pre>
+
+<!-- ###############################################################################===
+
+\frametitle{Method 2: Linear Discriminant Analysis}
+\textbf{Model Appraisal}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth]{sklcass/sklclass15}
+
+\end{figure}
+(Remark - almost same as logistic regression)
+
+<!-- ###############################################################################===
+
+	\frametitle{Method 2: Linear Discriminant Analysis}
+\Large
+\textbf{Linear Discriminant Analysis}
+<ul>
+<li> The major difference between LDA and Logistic Regression is the way both techniques picks the linear decision boundary.
+<li>  Linear Discriminant Analysis models the decision boundary by making distributional assumptions about the data generating process 
+<li> Logistic Regression models the probability of a sample being member of a class given its feature values.
+<\ul>
+
+
+<!-- ###############################################################################===
+
+	\frametitle{Method 3: Nearest Neighbor}
+\Large
+\textbf{Nearest Neighbor}
+<ul>
+<li> Nearest Neighbor uses the notion of similarity to assign class labels; it is based on the smoothness assumption that points which are nearby in input space should have similar outputs.
+<li>  It does this by specifying a similarity (or distance) metric, and at prediction time it simply searches for the k most similar among the training examples to a given test example.
+<\ul>
+
+
+<!-- ###############################################################################===
+
+\textbf{Nearest Neighbor}
+<ul> 
+	<li> The prediction is then either a majority vote of those k training examples or a vote weighted by similarity. <li> The parameter k specifies the smoothness of the decision surface.<li>  The decision surface of a k-nearest neighbor classifier can be illustrated by the \textbf{Voronoi tesselation} of the training data, that show you the regions of constant respones.
+<\ul>
+
+<!-- ###############################################################################===
+
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.1\linewidth]{sklcass/sklclass16}
+	
+	\end{figure}
+	
+
+<!-- ###############################################################################===
+
+		\frametitle{Method 3: Nearest Neighbor}
+		\Large
+	\textbf{Nearest Neighbours}
+<ul>
+<li> 	Yet Nearest Neighbor differs fundamentally from the above models in that it is a so-called non-parametric technique: the number of parameters of the model can grow infinitely as the size of the training data grows. 
+<li> Furthermore, it can model non-linear decision boundaries, something that is important for the first two datasets: moons and circles.
+<\ul>
+
+<pre>
+<code>
+from sklearn.neighbors import KNeighborsClassifier
+est = KNeighborsClassifier(n_neighbors=1)
+plot_datasets(est)
+<\code>
+<\pre>
+
+
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.1\linewidth]{sklcass/sklclass16}
+		
+	\end{figure}
+
+<!-- ###############################################################################===
+
+	
+<ul>
+<li> If we increase k we enforce the smoothness assumption. 
+<li> This can be seen by comparing the decision boundaries in the plots below where k=5 to those above where k=1.
+<\ul>
+	{
+		
+	<pre>
+	<code>
+	est = KNeighborsClassifier(n_neighbors=5)
+	plot_datasets(est)
+	
+	<\code>
+ <\pre>
+}
+
+<!-- ###############################################################################===
+
+	\frametitle{Method 3: Nearest Neighbor}
+\begin{figure}
+\centering
+\includegraphics[width=1.1\linewidth]{sklcass/sklclass20}
+
+

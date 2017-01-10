@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Using Scikit-Learn}{1}
+\contentsline {subsection}{\numberline {1.1}Data Loading}{1}
+\contentsline {subsection}{\numberline {1.2}About the PIMA data set}{2}
+\contentsline {subsection}{\numberline {1.3}Data Normalization}{3}
+\contentsline {subsection}{\numberline {1.4}More on Data Normalization and Data Scaling}{4}
+\contentsline {subsubsection}{\numberline {1.4.1}Rescaling}{4}
+\contentsline {subsubsection}{\numberline {1.4.2}Standardization}{4}
+\contentsline {subsubsection}{\numberline {1.4.3}Scaling to unit length}{5}
+\contentsline {subsection}{\numberline {1.5}Feature Selection}{6}
+\contentsline {subsection}{\numberline {1.6}Logistic Regression}{7}
+\contentsline {subsection}{\numberline {1.7}Naive Bayes}{8}
+\contentsline {subsection}{\numberline {1.8}k-Nearest Neighbours}{9}
+\contentsline {subsection}{\numberline {1.9}Decision Trees}{10}
+\contentsline {subsection}{\numberline {1.10}Support Vector Machines}{11}
+\contentsline {subsection}{\numberline {1.11}How to Optimize Algorithm Parameters}{12}
