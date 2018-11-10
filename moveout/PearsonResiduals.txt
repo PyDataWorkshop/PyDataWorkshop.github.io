@@ -1,19 +1,13 @@
 
-Introduction to scikit learn
-
-Supervised Learning with sci-kit learn
-
-Classification with sci-kit learn
-
-Cluster Analysis with sci-kit learn
 
 
 
----------------------------------------------------------
 
-Pearson Residuals
 
-The Pearson residual is the raw residual divided by the square root of the variance function {V(\mu)}.
+
+
+
+The Pearson residual is the raw residual divided by the square root of the variance function {V(\mu)}.
 The Pearson residual is the individual contribution to the Pearson \chi^2 statistic. For a binomial distribution with mi trials in the ith observation, it is defined as
 
 r_{Pi} = \sqrt{ m_{i}}
