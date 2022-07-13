@@ -1,0 +1,40 @@
+---
+title: "PyData Workshop"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: united
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+Numpy - Random Numbers
+=====================
+
+Column {.tabset}
+--------------
+
+### Random Numbers
+
+<h4> Installation </h4>
+
+<pre><code>
+
+import numpy as np
+
+</code></pre>
+
+#### Dice Rolls
+
+
+### The Normal Distribution
+
+<pre><code>
+
+np,random.randn()
+
+</code></pre>
+
