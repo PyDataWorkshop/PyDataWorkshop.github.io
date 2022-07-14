@@ -1411,22 +1411,22 @@ var FlexDashboard = (function () {
 
     // initialize sly
     var sly = new Sly(frameList, {
-      horizontal: true,
-      itemNav: 'basic',
-      smart: true,
-      activateOn: 'click',
-      startAt: 0,
-      scrollBy: 1,
-      activatePageOn: 'click',
-      speed: 200,
-      moveBy: 600,
-      dragHandle: true,
-      dynamicHandle: true,
-      clickBar: true,
-      keyboardNavBy: 'items',
-      next: next,
-      prev: prev
-     }).init();
+    		horizontal: true,
+    		itemNav: 'basic',
+    		smart: true,
+    		activateOn: 'click',
+    		startAt: 0,
+    		scrollBy: 1,
+    		activatePageOn: 'click',
+    		speed: 200,
+    		moveBy: 600,
+    		dragHandle: true,
+    		dynamicHandle: true,
+    		clickBar: true,
+    		keyboardNavBy: 'items',
+    		next: next,
+    		prev: prev
+    	}).init();
 
     // make first frame active
     frames.removeClass('active');
@@ -2068,11 +2068,11 @@ var FlexDashboard = (function () {
         'heading': [
           {
             // title 1
-           // =======
+        	  // =======
 
-           // title 2
-           // -------
-           pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
+        	  // title 2
+        	  // -------
+        	  pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
             alias: 'operator'
           },
           {
@@ -2597,49 +2597,50 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div id="numpy---random-numbers" class="section level1">
-<h1>Numpy - Random Numbers</h1>
+<div id="pydata-workshop" class="section level1">
+<h1>PyData Workshop</h1>
 <div id="column" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="mumpy" class="section level3">
-<h3>Mumpy</h3>
-<h4>
-NumPy
-</h4>
-<p>NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed. This tutorial explains the basics of NumPy such as its architecture and environment. It also discusses the various array functions, types of indexing, etc. An introduction to Matplotlib is also provided. All this is explained with the help of examples for better understanding.</p>
+<div id="meeting-1" class="section level3">
+<h3>Meeting 1</h3>
 </div>
 </div>
 </div>
-<div id="random-numbers" class="section level1">
-<h1>Random Numbers</h1>
+<div id="creating-a-geodataframe-from-a-dataframe-with-coordinates" class="section level1">
+<h1>Creating a GeoDataFrame from a DataFrame with coordinates</h1>
 <div id="column-1" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="random-numbers-1" class="section level3">
-<h3>Random Numbers</h3>
-<h4>
-Installation
-</h4>
-<pre><code>
-
-import numpy as np
-
-</code></pre>
-<div id="dice-rolls" class="section level4">
-<h4>Dice Rolls</h4>
-</div>
-</div>
-<div id="the-normal-distribution" class="section level3">
-<h3>The Normal Distribution</h3>
-<pre><code>
-
-np,random.randn()
-
-</code></pre>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
+<div id="creating-a-geodataframe-from-a-dataframe-with-coordinates-1" class="section level3">
+<h3>Creating a GeoDataFrame from a DataFrame with coordinates</h3>
+<p>This example shows how to create a GeoDataFrame when starting from a regular DataFrame that has coordinates either WKT (well-known text) format, or in two columns.</p>
+<p>import pandas as pd import geopandas import matplotlib.pyplot as plt</p>
+<div id="from-longitudes-and-latitudes" class="section level4">
+<h4>From longitudes and latitudes</h4>
+<p>First, let’s consider a DataFrame containing cities and their respective longitudes and latitudes.</p>
+<p>df = pd.DataFrame( {‘City’: [‘Buenos Aires’, ‘Brasilia’, ‘Santiago’, ‘Bogota’, ‘Caracas’], ‘Country’: [‘Argentina’, ‘Brazil’, ‘Chile’, ‘Colombia’, ‘Venezuela’], ‘Latitude’: [-34.58, -15.78, -33.45, 4.60, 10.48], ‘Longitude’: [-58.66, -47.91, -70.66, -74.08, -66.86]}) A GeoDataFrame needs a shapely object. We use geopandas points_from_xy() to transform Longitude and Latitude into a list of shapely.Point objects and set it as a geometry while creating the GeoDataFrame. (note that points_from_xy() is an enhanced wrapper for [Point(x, y) for x, y in zip(df.Longitude, df.Latitude)])</p>
+<p>gdf = geopandas.GeoDataFrame( df, geometry=geopandas.points_from_xy(df.Longitude, df.Latitude)) gdf looks like this :</p>
+<p>print(gdf.head()) City Country Latitude Longitude geometry 0 Buenos Aires Argentina -34.58 -58.66 POINT (-58.66000 -34.58000) 1 Brasilia Brazil -15.78 -47.91 POINT (-47.91000 -15.78000) 2 Santiago Chile -33.45 -70.66 POINT (-70.66000 -33.45000) 3 Bogota Colombia 4.60 -74.08 POINT (-74.08000 4.60000) 4 Caracas Venezuela 10.48 -66.86 POINT (-66.86000 10.48000) Finally, we plot the coordinates over a country-level map.</p>
+<p>world = geopandas.read_file(geopandas.datasets.get_path(‘naturalearth_lowres’))</p>
 </div>
 </div>
 </div>
+</div>
+<div id="we-restrict-to-south-america." class="section level1">
+<h1>We restrict to South America.</h1>
+<p>ax = world[world.continent == ‘South America’].plot( color=‘white’, edgecolor=‘black’)</p>
+</div>
+<div id="we-can-now-plot-our-geodataframe." class="section level1">
+<h1>We can now plot our <code>GeoDataFrame</code>.</h1>
+<p>gdf.plot(ax=ax, color=‘red’)</p>
+<p>plt.show() ../_images/gallery_create_geopandas_from_pandas_9_0.png From WKT format Here, we consider a DataFrame having coordinates in WKT format.</p>
+<p>df = pd.DataFrame( {‘City’: [‘Buenos Aires’, ‘Brasilia’, ‘Santiago’, ‘Bogota’, ‘Caracas’], ‘Country’: [‘Argentina’, ‘Brazil’, ‘Chile’, ‘Colombia’, ‘Venezuela’], ‘Coordinates’: [‘POINT(-58.66 -34.58)’, ‘POINT(-47.91 -15.78)’, ‘POINT(-70.66 -33.45)’, ‘POINT(-74.08 4.60)’, ‘POINT(-66.86 10.48)’]}) We use shapely.wkt sub-module to parse wkt format:</p>
+<p>from shapely import wkt</p>
+<p>df[‘Coordinates’] = geopandas.GeoSeries.from_wkt(df[‘Coordinates’]) The GeoDataFrame is constructed as follows :</p>
+<p>gdf = geopandas.GeoDataFrame(df, geometry=‘Coordinates’)</p>
+<p>print(gdf.head()) City Country Coordinates 0 Buenos Aires Argentina POINT (-58.66000 -34.58000) 1 Brasilia Brazil POINT (-47.91000 -15.78000) 2 Santiago Chile POINT (-70.66000 -33.45000) 3 Bogota Colombia POINT (-74.08000 4.60000) 4 Caracas Venezuela POINT (-66.86000 10.48000) Again, we can plot our GeoDataFrame.</p>
+<p>ax = world[world.continent == ‘South America’].plot( color=‘white’, edgecolor=‘black’)</p>
+<p>gdf.plot(ax=ax, color=‘red’)</p>
+<p>plt.show() ../_images/gallery_create_geopandas_from_pandas_17_0.png</p>
 </div>
 
 </div>

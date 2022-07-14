@@ -1,17 +1,4 @@
----
-title: "PyData Workshop"
-output: 
-  flexdashboard::flex_dashboard:
-    theme: united
-    css: style.css
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-```
-
-Numpy - Random Numbers
+Random Numbers
 =====================
 
 Column {.tabset}
@@ -38,3 +25,6 @@ np,random.randn()
 
 </code></pre>
 
+```{py echo=FALSE}
+a=b
+```

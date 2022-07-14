@@ -1,15 +1,15 @@
-\subsection*{ Special Numbers : \texttt{inf} and \texttt{NaN}}
-\begin{itemize}
+### *{ Special Numbers : \texttt{inf} and \texttt{NaN}}
 
-\item \texttt{inf} represents infinity and \texttt{inf} is distinct from \texttt{-inf}.
-\item \texttt{inf} can be constructed in a number for ways, for
+
+ \texttt{inf} represents infinity and \texttt{inf} is distinct from \texttt{-inf}.
+ \texttt{inf} can be constructed in a number for ways, for
 example or exp(710). 
 
-\item \texttt{nan} stands for \textbf{\textit{Not a Number}}, and nans are created whenever a function produces
+ \texttt{nan} stands for \textbf{\textit{Not a Number}}, and nans are created whenever a function produces
 a result that cannot be clearly evaluated to produce a number or infinity. For example, \texttt{inf/-inf} results in
 \texttt{nan}. 
-\item \texttt{nans} often cause problems since most mathematical operations involving a \texttt{nan }produce a \texttt{nan}.
-\end{itemize}
+ \texttt{nans} often cause problems since most mathematical operations involving a \texttt{nan }produce a \texttt{nan}.
+
 \begin{framed}
 \begin{verbatim}
 >>> x = nan
@@ -39,20 +39,20 @@ nan
 %which differ by less than 2.220410􀀀16 are numerically the same. To explore the role of precision, examine
 %the results of the following:
 %\begin{framed}
-%	\begin{verbatim}
-%	>>> x = 1.0
-%	>>> eps = finfo(float).eps
-%	>>> x = x+eps/2
-%	>>> x == 1
-%	True
-%	>>> x1
-%	0.0
-%	>>> x = 1 + 2*eps
-%	>>> x == 1
-%	False
-%	>>> x1
-%	ans = 4.4408920985006262e16
-%	\end{verbatim}
+% \begin{verbatim}
+% >>> x = 1.0
+% >>> eps = finfo(float).eps
+% >>> x = x+eps/2
+% >>> x == 1
+% True
+% >>> x1
+% 0.0
+% >>> x = 1 + 2*eps
+% >>> x == 1
+% False
+% >>> x1
+% ans = 4.4408920985006262e16
+% \end{verbatim}
 %\end{framed}
 %Moreover, any number y where y <
 %􀀀
@@ -60,20 +60,20 @@ nan
 %is treated as 0 when added or subtracted.
 %This is referred to as relative range.
 %\begin{framed}
-%	\begin{verbatim}
-%	>>> x=10
-%	>>> x+2*eps
-%	>>> x10
-%	0
-%	>>> (x10)
-%	== 0
-%	True
-%	>>> (1e120 1e103)
-%	== 1e120
-%	True
-%	>>> 1e103 / 1e120
-%	1e17
-%	\end{verbatim}
+% \begin{verbatim}
+% >>> x=10
+% >>> x+2*eps
+% >>> x10
+% 0
+% >>> (x10)
+% == 0
+% True
+% >>> (1e120 1e103)
+% == 1e120
+% True
+% >>> 1e103 / 1e120
+% 1e17
+% \end{verbatim}
 %\end{framed}
 %In the first example, eps/2<eps when compared to 1 so it has no effect while 2*eps>eps and so this value
 %is different from 1. In the second example, 2*eps/10<eps, it has no effect when added. The final example

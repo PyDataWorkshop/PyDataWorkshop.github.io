@@ -1,0 +1,1 @@
+https://automating-gis-processes.github.io/CSC18/course-info/Installing_Anacondas_GIS.html

@@ -1411,22 +1411,22 @@ var FlexDashboard = (function () {
 
     // initialize sly
     var sly = new Sly(frameList, {
-      horizontal: true,
-      itemNav: 'basic',
-      smart: true,
-      activateOn: 'click',
-      startAt: 0,
-      scrollBy: 1,
-      activatePageOn: 'click',
-      speed: 200,
-      moveBy: 600,
-      dragHandle: true,
-      dynamicHandle: true,
-      clickBar: true,
-      keyboardNavBy: 'items',
-      next: next,
-      prev: prev
-     }).init();
+    		horizontal: true,
+    		itemNav: 'basic',
+    		smart: true,
+    		activateOn: 'click',
+    		startAt: 0,
+    		scrollBy: 1,
+    		activatePageOn: 'click',
+    		speed: 200,
+    		moveBy: 600,
+    		dragHandle: true,
+    		dynamicHandle: true,
+    		clickBar: true,
+    		keyboardNavBy: 'items',
+    		next: next,
+    		prev: prev
+    	}).init();
 
     // make first frame active
     frames.removeClass('active');
@@ -2068,11 +2068,11 @@ var FlexDashboard = (function () {
         'heading': [
           {
             // title 1
-           // =======
+        	  // =======
 
-           // title 2
-           // -------
-           pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
+        	  // title 2
+        	  // -------
+        	  pattern: /\w+.*(?:\r?\n|\r)(?:====+|----+)/,
             alias: 'operator'
           },
           {
@@ -2597,46 +2597,30 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div id="numpy---random-numbers" class="section level1">
-<h1>Numpy - Random Numbers</h1>
+<div id="pydata-workshop" class="section level1">
+<h1>PyData Workshop</h1>
 <div id="column" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="mumpy" class="section level3">
-<h3>Mumpy</h3>
+<div id="meeting-1" class="section level3">
+<h3>Meeting 1</h3>
 <h4>
-NumPy
+Meeting 1
 </h4>
-<p>NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed. This tutorial explains the basics of NumPy such as its architecture and environment. It also discusses the various array functions, types of indexing, etc. An introduction to Matplotlib is also provided. All this is explained with the help of examples for better understanding.</p>
+<div id="data-sets-provided" class="section level4">
+<h4>1. Data Sets provided</h4>
+<ul>
+<li>&lt; a href = “quarto/index.html”&gt;Quarto</a></li>
+<li>&lt; a href = “geopandas/index.html”&gt; geopandas</a></li>
+</ul>
 </div>
-</div>
-</div>
-<div id="random-numbers" class="section level1">
-<h1>Random Numbers</h1>
-<div id="column-1" class="section level2 tabset">
-<h2 class="tabset">Column</h2>
-<div id="random-numbers-1" class="section level3">
-<h3>Random Numbers</h3>
-<h4>
-Installation
-</h4>
-<pre><code>
-
-import numpy as np
-
-</code></pre>
-<div id="dice-rolls" class="section level4">
-<h4>Dice Rolls</h4>
-</div>
-</div>
-<div id="the-normal-distribution" class="section level3">
-<h3>The Normal Distribution</h3>
-<pre><code>
-
-np,random.randn()
-
-</code></pre>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
+<div id="district-map-to-aggregate-forests" class="section level4">
+<h4>3. District map to aggregate forests</h4>
+<ul>
+<li>KOB to provide</li>
+<li>Identify Coastal and internal districts</li>
+<li>Optional - Coordinates of median of Subcompartmemt</li>
+<li>Intention - The location relative to the coast is a proxy for wind-risk</li>
+</ul>
 </div>
 </div>
 </div>
