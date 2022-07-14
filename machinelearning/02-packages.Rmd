@@ -1,18 +1,4 @@
-\documentclass[MASTER.tex]{subfiles} 
-\begin{document} 
- 
- 
- 
- \huge
-\[ \mbox{Other Interesting Python Packages} \]
- 
 
-
-
-
- 
- \begin{figure}
-\centering
 \includegraphics[width=0.7\linewidth]{SKL-logo}
 
 \end{figure}
@@ -33,8 +19,7 @@
   scikit-learn features various classification, regression and clustering algorithms including support vector machines, logistic regression, naive Bayes, random forests, gradient boosting, k-means and DBSCAN.  scikit-learn is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy.
   
  
-%===========================================================%
- 
+
 \textbf{Sci-Kit Learn Site info}
  \begin{figure}
 \centering
@@ -82,7 +67,7 @@
  
 %===========================================================%
  
-\frametitle{Other Packages}
+### Other Packages
  
 \textbf{pytz and babel}\\
 ptyz and babel provide extended support for time zones and formatting information.\\ \bigskip
@@ -93,4 +78,3 @@ the two platforms.\\ \bigskip
 PyTables and h5py both provide access to HDF5 files, a flexible data storage format optimized for numeric
 data.
  
-\end{document}
