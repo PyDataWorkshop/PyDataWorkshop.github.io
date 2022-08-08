@@ -1,5 +1,12 @@
+Linear Algebra {data-navmenu="Linear Algebra"}
+==================================
 
-NumPy - Linear Algebra
+Column {.tabset}
+-----------------------------
+
+### Linear Algebra
+
+#### Linear Algebra
 
 
 
