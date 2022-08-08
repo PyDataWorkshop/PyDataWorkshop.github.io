@@ -1,1 +1,5 @@
 https://automating-gis-processes.github.io/CSC18/course-info/Installing_Anacondas_GIS.html
+
+https://programminghistorian.org/en/lessons/mapping-with-python-leaflet
+
+https://coderzcolumn.com/tutorials/data-science/ipyleaflet-interactive-maps-in-python-based-on-leafletjs#:~:text=Python%20has%20a%20list%20of%20libraries%20for%20plotting,is%20built%20on%20top%20of%20leaflet.js%20and%20ipywidgets.

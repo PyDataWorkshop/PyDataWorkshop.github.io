@@ -7,7 +7,7 @@ show the polynomial coefficients:
 >>> np.poly([-1, 1, 1, 10])
 array([ 1, -11, 9, 11, -10])
 \end{verbatim}
-\end{framed}
+<p>
 \noindent Here, the return array gives the coefficients corresponding to
 
 \[(x+1)(x-1)(x-1)(x-10) = x^4 -11x^2 + 9x^2 +11x-10 \]
@@ -22,7 +22,7 @@ all of the polynomial roots:
 array([-4.57974010+0.j , 0.28987005+0.75566815j,
     0.28987005-0.75566815j])
  \end{verbatim}
-\end{framed}
+<p>
 \noindent Notice here that two of the roots of
 \[x^3 + 4x -2x +3\]
  are complex numbers (real and imaginary components).
@@ -43,7 +43,7 @@ Coefficient arrays of polynomials can be integrated. Consider integrating
  
  array([ 0.25 , 0.33333333, 0.5 , 1. , 0. ])
  \end{verbatim}
-\end{framed}
+<p>
 \noindent Similarly, derivatives can be taken. Reversing the previous example, we get
  \begin{framed}
  \begin{verbatim}
@@ -51,7 +51,7 @@ Coefficient arrays of polynomials can be integrated. Consider integrating
  
  array([ 1., 1., 1., 1.])
 \end{verbatim}
-\end{framed}
+<p>
 
 
 %----------------------------------------------- %
@@ -73,7 +73,7 @@ evaluated at $x=4$.
 
  34
 \end{verbatim}
-\end{framed}
+<p>
 
 %----------------------------------------------- %
 ### *{Line Fitting}
@@ -88,6 +88,6 @@ using a least-squares approach:
  
  array([ 0.375 , -0.88690476, 1.05357143])
 \end{verbatim}
-\end{framed}
+<p>
 \noindent The return value is a set of polynomial coefficients. More sophisticated interpolation routines
 can be found in the SciPy package.
