@@ -1,0 +1,28 @@
+
+<span style="text-decoration: underline;"><strong>Statistics with Python : Exploratory Data Analysis</strong></span>
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<font size =6>
+<table class="tg">
+  <tr>
+    <td class="tg-yw4l">
+
+<ul>
+	<li>Descriptive Statistics
+<ul>
+	<li>Trimean for Skewed Data</li>
+</ul>
+</li>
+	<li>Probability and Statistics with <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/Python-ProbandStats.ipynb" target="_blank">Python</a></li>
+</ul>
+
+</td>
+  </tr>
+</table>
+</font>
