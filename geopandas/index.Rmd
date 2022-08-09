@@ -17,9 +17,18 @@ PyData Workshop
 Column {.tabset}
 --------------
 
-### Meeting 1
+### geopandas
 
-Creating a GeoDataFrame from a DataFrame with coordinates
+<h4> geopandas</h4>
+
+Geopandas (http://geopandas.org/) makes it possible to work with geospatial data in Python in a relatively easy way. Geopandas combines the capabilities of the data analysis library pandas with other packages like shapely and fiona for managing spatial data.
+<p>
+The main data structures in geopandas are GeoSeries and GeoDataFrame which extend the capabilities of Series and DataFrames from pandas. This means that we can use all our pandas skills also when working with geopandas! If you need to refresh your memory about pandas, check out week 5 and 6 lesson materials from the Geo-Python website.
+<p>
+The main difference between geodataframes and pandas dataframes is that a geodataframe should contain one column for geometries. By default, the name of this column is 'geometry'. The geometry column is a geoseries which contains the geometries (points, lines, polygons, multipolygons etc.) as shapely objects.
+
+
+Worked Example
 =====================
 
 Column {.tabset}
@@ -28,24 +37,33 @@ Column {.tabset}
 ### Creating a GeoDataFrame from a DataFrame with coordinates
 This example shows how to create a GeoDataFrame when starting from a regular DataFrame that has coordinates either WKT (well-known text) format, or in two columns.
 
+```{python, eval=FALSE}
 import pandas as pd
 import geopandas
 import matplotlib.pyplot as plt
+```
 
 #### From longitudes and latitudes
 First, let’s consider a DataFrame containing cities and their respective longitudes and latitudes.
-
+```{python, eval=FALSE}
 df = pd.DataFrame(
     {'City': ['Buenos Aires', 'Brasilia', 'Santiago', 'Bogota', 'Caracas'],
      'Country': ['Argentina', 'Brazil', 'Chile', 'Colombia', 'Venezuela'],
      'Latitude': [-34.58, -15.78, -33.45, 4.60, 10.48],
      'Longitude': [-58.66, -47.91, -70.66, -74.08, -66.86]})
+```
+
+
 A GeoDataFrame needs a shapely object. We use geopandas points_from_xy() to transform Longitude and Latitude into a list of shapely.Point objects and set it as a geometry while creating the GeoDataFrame. (note that points_from_xy() is an enhanced wrapper for [Point(x, y) for x, y in zip(df.Longitude, df.Latitude)])
 
+<pre><code>
 gdf = geopandas.GeoDataFrame(
     df, geometry=geopandas.points_from_xy(df.Longitude, df.Latitude))
+</code></pre>
+
 gdf looks like this :
 
+<pre><code>
 print(gdf.head())
            City    Country  Latitude  Longitude                     geometry
 0  Buenos Aires  Argentina    -34.58     -58.66  POINT (-58.66000 -34.58000)
@@ -53,6 +71,8 @@ print(gdf.head())
 2      Santiago      Chile    -33.45     -70.66  POINT (-70.66000 -33.45000)
 3        Bogota   Colombia      4.60     -74.08    POINT (-74.08000 4.60000)
 4       Caracas  Venezuela     10.48     -66.86   POINT (-66.86000 10.48000)
+</code></pre>
+
 Finally, we plot the coordinates over a country-level map.
 
 world = geopandas.read_file(geopandas.datasets.get_path('naturalearth_lowres'))
@@ -71,28 +91,38 @@ plt.show()
 From WKT format
 Here, we consider a DataFrame having coordinates in WKT format.
 
+```{python, eval=FALSE}
 df = pd.DataFrame(
     {'City': ['Buenos Aires', 'Brasilia', 'Santiago', 'Bogota', 'Caracas'],
      'Country': ['Argentina', 'Brazil', 'Chile', 'Colombia', 'Venezuela'],
      'Coordinates': ['POINT(-58.66 -34.58)', 'POINT(-47.91 -15.78)',
                      'POINT(-70.66 -33.45)', 'POINT(-74.08 4.60)',
                      'POINT(-66.86 10.48)']})
+                     
+```                   
 We use shapely.wkt sub-module to parse wkt format:
 
+<pre><code>
 from shapely import wkt
 
 df['Coordinates'] = geopandas.GeoSeries.from_wkt(df['Coordinates'])
+</code></pre>
 The GeoDataFrame is constructed as follows :
-
+```{python, eval=FALSE}
 gdf = geopandas.GeoDataFrame(df, geometry='Coordinates')
 
 print(gdf.head())
+```
+
+<pre><code>
            City    Country                  Coordinates
 0  Buenos Aires  Argentina  POINT (-58.66000 -34.58000)
 1      Brasilia     Brazil  POINT (-47.91000 -15.78000)
 2      Santiago      Chile  POINT (-70.66000 -33.45000)
 3        Bogota   Colombia    POINT (-74.08000 4.60000)
 4       Caracas  Venezuela   POINT (-66.86000 10.48000)
+</code></pre>
+
 Again, we can plot our GeoDataFrame.
 
 ax = world[world.continent == 'South America'].plot(

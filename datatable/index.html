@@ -8,9 +8,9 @@
 
 
 
-<title>PyData Workshop</title>
+<title>PyData Workshop - Datatable</title>
 
-<meta property="og:title" content="PyData Workshop" />
+<meta property="og:title" content="PyData Workshop - Datatable" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -854,7 +854,7 @@ html, body {
   
 </span>
 <span class="navbar-brand">
-  PyData Workshop
+  PyData Workshop - Datatable
   <span class="navbar-author">
         </span>
 </span>
@@ -2661,108 +2661,233 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
-<div id="pydata-workshop" class="section level1">
-<h1>PyData Workshop</h1>
+<div id="pydata-workshop---datatable" class="section level1">
+<h1>PyData Workshop - Datatable</h1>
 <div id="column" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="geopandas" class="section level3">
-<h3>geopandas</h3>
+<div id="datatable" class="section level3">
+<h3>Datatable</h3>
+<p><a href="/index.html">Back to main Page</a></p>
 <h4>
-geopandas
+Datatable
 </h4>
-Geopandas (<a href="http://geopandas.org/" class="uri">http://geopandas.org/</a>) makes it possible to work with geospatial data in Python in a relatively easy way. Geopandas combines the capabilities of the data analysis library pandas with other packages like shapely and fiona for managing spatial data.
+<p>Datatable is a python library for manipulating tabular data. It supports out-of-memory datasets, multi-threaded data processing, and flexible API.</p>
 <p>
-The main data structures in geopandas are GeoSeries and GeoDataFrame which extend the capabilities of Series and DataFrames from pandas. This means that we can use all our pandas skills also when working with geopandas! If you need to refresh your memory about pandas, check out week 5 and 6 lesson materials from the Geo-Python website.
-<p>
-<p>The main difference between geodataframes and pandas dataframes is that a geodataframe should contain one column for geometries. By default, the name of this column is ‘geometry’. The geometry column is a geoseries which contains the geometries (points, lines, polygons, multipolygons etc.) as shapely objects.</p>
+<p>a Python counterpart to thedata.table package called datatable which has a clear focus on big data support, high performance, both in-memory and out-of-memory datasets, and multi-threaded algorithms.</p>
+</div>
+<div id="installation" class="section level3">
+<h3>Installation</h3>
+<h4>
+Basic installation
+</h4>
+<p>On most platforms datatable can be installed directly from PyPI using pip:</p>
+<pre><code>
+pip install datatable
+</code></pre>
+<p>The following platforms are supported:</p>
+<ul>
+<li><p>macOS - Datatable has been tested to work on macOS 10.12 (Sierra), macOS 10.13 (High Sierra), macOS 10.15 (Catalina), macOS 11 (BigSur) and macOS 12 (Monterey).</p></li>
+<li><p>Linux x86_64 / ppc64le - For x86_64 and ppc64le architectures we produce binary wheels that are tagged as manylinux_2_17. Consequently, they will work with your Linux distribution if it is compatible with this tag. Please refer to PEP 600 for details.</p></li>
+<li><p>Windows - Windows wheels are available for Windows 10 or later.</p></li>
+</ul>
+<p>Getting started</p>
+</div>
+<div id="install-datatable" class="section level3">
+<h3>Install datatable</h3>
+<p>Let’s begin by installing the latest stable version of datatable from PyPI:</p>
+<p>pip install datatable If this didn’t work for you, or if you want to install the bleeding edge version of the library, please check the Installation page.</p>
+<p>Assuming the installation was successful, you can now import the library in a JupyterLab notebook or in a Python console:</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datatable <span class="im">as</span> dt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dt.__version__)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0.0</span></span></code></pre></div>
+</div>
+<div id="loading-data" class="section level3">
+<h3>Loading data</h3>
+<p>The fundamental unit of analysis in datatable is a data Frame. It is the same notion as a pandas DataFrame or SQL table: data arranged in a two-dimensional array with rows and columns.</p>
+<p>You can create a Frame object from a variety of data sources: from a python list or dictionary, from a numpy array, or from a pandas DataFrame:</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DT1 <span class="op">=</span> dt.Frame(A<span class="op">=</span><span class="bu">range</span>(<span class="dv">5</span>), B<span class="op">=</span>[<span class="fl">1.7</span>, <span class="fl">3.4</span>, <span class="dv">0</span>, <span class="va">None</span>, <span class="op">-</span>math.inf],</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               stypes<span class="op">=</span>{<span class="st">&quot;A&quot;</span>: dt.int64})</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>DT2 <span class="op">=</span> dt.Frame(pandas_dataframe)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>DT3 <span class="op">=</span> dt.Frame(numpy_array)</span></code></pre></div>
+<p>You can also load a CSV/text/Excel file, or open a previously saved binary .jay file:</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DT4 <span class="op">=</span> dt.fread(<span class="st">&quot;~/Downloads/dataset_01.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DT5 <span class="op">=</span> dt.<span class="bu">open</span>(<span class="st">&quot;data.jay&quot;</span>)</span></code></pre></div>
+<p>The fread() function shown above is both powerful and extremely fast. It can automatically detect parse parameters for the majority of text files, load data from .zip archives or URLs, read Excel files, and much more.</p>
+</div>
+<div id="data-manipulation" class="section level3">
+<h3>Data manipulation</h3>
+<p>Once the data is loaded into a Frame, you may want to do certain operations with it: extract/remove/modify subsets of the data, perform calculations, reshape, group, join with other datasets, etc. In datatable, the primary vehicle for all these operations is the square-bracket notation inspired by traditional matrix indexing but overcharged with power (this notation was pioneered in R data.table and is the main axis of intersection between these two libraries).</p>
+<p>In short, almost all operations with a Frame can be expressed as</p>
+<p><span class="math display">\[DT[i, j, ...]\]</span></p>
+<p>where i is the row selector, j is the column selector, and … indicates that additional modifiers might be added. If this looks familiar to you, that’s because it is. Exactly the same DT[i, j] notation is used in mathematics when indexing matrices, in C/C++, in R, in pandas, in numpy, etc. The only difference that datatable introduces is that it allows i to be anything that can conceivably be interpreted as a row selector: an integer to select just one row, a slice, a range, a list of integers, a list of slices, an expression, a boolean-valued Frame, an integer-valued Frame, an integer numpy array, a generator, and so on.</p>
+<p>The j column selector is even more versatile. In the simplest case, you can select just a single column by its index or name. But also accepted are a list of columns, a slice, a string slice (of the form “A”:“Z”), a list of booleans indicating which columns to pick, an expression, a list of expressions, and a dictionary of expressions. (The keys will be used as new names for the columns being selected.) The j expression can even be a python type (such as int or dt.float32), selecting all columns matching that type.</p>
+<p>In addition to the selector expression shown above, we support the update and delete statements too:</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DT[i, j] <span class="op">=</span> r</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> DT[i, j]</span></code></pre></div>
+<p>The first expression will replace values in the subset [i, j] of Frame DT with the values from r, which could be either a constant, or a suitably-sized Frame, or an expression that operates on frame DT.</p>
+<p>The second expression deletes values in the subset [i, j]. This is interpreted as follows: if i selects all rows, then the columns given by j are removed from the Frame; if j selects all columns, then the rows given by i are removed; if neither i nor j span all rows/columns of the Frame, then the elements in the subset [i, j] are replaced with NAs.</p>
+</div>
+<div id="what-the-f." class="section level3">
+<h3>What the f.?</h3>
+<p>You may have noticed already that we mentioned several times the possibility of using expressions in i or j and in other places. In the simplest form an expression looks like:</p>
+<p>f.ColA which indicates a column ColA in some Frame. Here f is a variable that has to be imported from the datatable module. This variable provides a convenient way to reference any column in a Frame. In addition to the notation above, the following is also supported:</p>
+<p>f[3] f[“ColB”] denoting the fourth column and the column ColB respectively.</p>
+<p>These f-expression support arithmetic operations as well as various mathematical and aggregate functions. For example, in order to select the values from column A normalized to range [0; 1] we can write the following:</p>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datatable <span class="im">import</span> f, <span class="bu">min</span>, <span class="bu">max</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>DT[:, (f.A <span class="op">-</span> <span class="bu">min</span>(f.A))<span class="op">/</span>(<span class="bu">max</span>(f.A) <span class="op">-</span> <span class="bu">min</span>(f.A))]</span></code></pre></div>
+<p>This is equivalent to the following SQL query:</p>
+<p>SELECT (f.A - MIN(f.A))/(MAX(f.A) - MIN(f.A)) FROM DT AS f So, what exactly is f? We call it a “frame proxy”, as it becomes a simple way to refer to the Frame that we currently operate on. More precisely, whenever DT[i, j] is evaluated and we encounter an f-expression there, that f becomes replaced with the frame DT, and the columns are looked up on that Frame. The same expression can later on be applied to a different Frame, and it will refer to the columns in that other Frame.</p>
+<p>At some point you may notice that that datatable also exports symbol g. This g is also a frame proxy; however it already refers to the second frame in the evaluated expression. This second frame appears when you are joining two or more frames together (more on that later). When that happens, symbol g is used to refer to the columns of the joined frame.</p>
+</div>
+<div id="groupbysjoins" class="section level3">
+<h3>Groupbys/joins</h3>
+<p>In the Data Manipulation section we mentioned that the DT[i, j, …] selector can take zero or more modifiers, which we denoted as “…”. The available modifiers are by(), join() and sort(). Thus, the full form of the square-bracket selector is:</p>
+<p>DT[i, j, by(), sort(), join()] by(…) This modifier splits the frame into groups by the provided column(s), and then applies i and j within each group. This mostly affects aggregator functions such as sum(), min() or sd(), but may also apply in other circumstances. For example, if i is a slice that takes the first 5 rows of a frame, then in the presence of the by() modifier it will take the first 5 rows of each group.</p>
+<p>For example, in order to find the total amount of each product sold, write:</p>
+<p>from datatable import f, by, sum DT = dt.fread(“transactions.csv”)</p>
+<p>DT[:, sum(f.quantity), by(f.product_id)] sort(…) This modifier controls the order of the rows in the result, much like SQL clause ORDER BY. If used in conjunction with by(), it will order the rows within each group.</p>
+<p>join(…) As the name suggests, this operator allows you to join another frame to the current, equivalent to the SQL JOIN operator. Currently we support only left outer joins.</p>
+<p>In order to join frame X, it must be keyed. A keyed frame is conceptually similar to a SQL table with a unique primary key. This key may be either a single column, or several columns:</p>
+<p>X.key = “id” Once a frame is keyed, it can be joined to another frame DT, provided that DT has the column(s) with the same name(s) as the key in X:</p>
+<p>DT[:, :, join(X)] This has the semantics of a natural left outer join. The X frame can be considered as a dictionary, where the key column contains the keys, and all other columns are the corresponding values. Then during the join each row of DT will be matched against the row of X with the same value of the key column, and if there are no such value in X, with an all-NA row.</p>
+<p>The columns of the joined frame can be used in expressions using the g. prefix, for example:</p>
+<p>DT[:, sum(f.quantity * g.price), join(products)] In the future, we will expand the syntax of the join operator to allow other kinds of joins and also to remove the limitation that only keyed frames can be joined.</p>
+</div>
+<div id="offloading-data" class="section level3">
+<h3>Offloading data</h3>
+<p>Just as our work has started with loading some data into datatable, eventually you will want to do the opposite: store or move the data somewhere else. We support multiple mechanisms for this.</p>
+<p>First, the data can be converted into a pandas DataFrame or into a numpy array. (Obviously, you have to have pandas or numpy libraries installed.):</p>
+<p>DT.to_pandas() DT.to_numpy() A frame can also be converted into python native data structures: a dictionary, keyed by the column names; a list of columns, where each column is itself a list of values; or a list of rows, where each row is a tuple of values:</p>
+<p>DT.to_dict() DT.to_list() DT.to_tuples() You can also save a frame into a CSV file, or into a binary .jay file:</p>
+<p>DT.to_csv(“out.csv”) DT.to_jay(“data.jay”)</p>
 </div>
 </div>
 </div>
-<div id="worked-example" class="section level1">
-<h1>Worked Example</h1>
+<div id="pydata-workshop---datatable-1" class="section level1">
+<h1>PyData Workshop - Datatable</h1>
 <div id="column-1" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="creating-a-geodataframe-from-a-dataframe-with-coordinates" class="section level3">
-<h3>Creating a GeoDataFrame from a DataFrame with coordinates</h3>
-<p>This example shows how to create a GeoDataFrame when starting from a regular DataFrame that has coordinates either WKT (well-known text) format, or in two columns.</p>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
+<ul>
+<li><p><a href="https://towardsdatascience.com/an-overview-of-pythons-datatable-package-5d3a97394ee9" class="uri">https://towardsdatascience.com/an-overview-of-pythons-datatable-package-5d3a97394ee9</a></p></li>
+<li><p><a href="https://www.openintro.org/data/index.php?data=loans_full_schema" class="uri">https://www.openintro.org/data/index.php?data=loans_full_schema</a></p></li>
+<li><p><a href="https://www.kaggle.com/datasets/wordsforthewise/lending-club" class="uri">https://www.kaggle.com/datasets/wordsforthewise/lending-club</a></p></li>
+</ul>
+</div>
+<div id="reading-the-data" class="section level3">
+<h3>Reading the Data</h3>
+<p>The dataset being used has been taken from Kaggle and belongs to the Lending Club Loan Data Dataset. The dataset consists of complete loan data for all loans issued through the 2007–2015, including the current loan status (Current, Late, Fully Paid, etc.) and latest payment information. The file consists of 2.26 Million rows and 145 columns. The data size is ideal to demonstrate the capabilities of the datatable library.</p>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
-<div id="from-longitudes-and-latitudes" class="section level4">
-<h4>From longitudes and latitudes</h4>
-First, let’s consider a DataFrame containing cities and their respective longitudes and latitudes.
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing necessary Libraries</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datatable <span class="im">as</span> dt</span></code></pre></div>
+<p>Let’s load in the data into the Frame object. The fundamental unit of analysis in datatable is a Frame. It is the same notion as a pandas DataFrame or SQL table: data arranged in a two-dimensional array with rows and columns.</p>
+<div id="with-datatable" class="section level4">
+<h4>With datatable</h4>
+<pre><code>
+%%time
+datatable_df = dt.fread(&quot;data.csv&quot;)
+____________________________________________________________________
+CPU times: user 30 s, sys: 3.39 s, total: 33.4 s                                
+Wall time: 23.6 s
+</code></pre>
+<p>The <tt>fread()</tt> function above is both powerful and extremely fast. It can automatically detect and parse parameters for the majority of text files, load data from .zip archives or URLs, read Excel files, and much more.</p>
+<p>Additionally, the datatable parser :</p>
+<p>Can automatically detect separators, headers, column types, quoting rules, etc. Can read data from multiple sources including file, URL, shell, raw text, archives and glob. Provides multi-threaded file reading for maximum speed Includes a progress indicator when reading large files Can read both RFC4180-compliant and non-compliant files. With pandas</p>
+<p>Now, let us calculate the time taken by pandas to read the same file.</p>
+<p>%%time pandas_df= pd.read_csv(“data.csv”) ___________________________________________________________ CPU times: user 47.5 s, sys: 12.1 s, total: 59.6 s Wall time: 1min 4s The results show that datatable clearly outperforms pandas when reading large datasets. Whereas pandas take more than a minute, datatable only takes seconds for the same.</p>
+</div>
+</div>
+<div id="frame-conversion" class="section level3">
+<h3>Frame Conversion</h3>
+<p>The existing Frame can also be converted into a numpy or pandas dataframe as follows:</p>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;City&#39;</span>: [<span class="st">&#39;Buenos Aires&#39;</span>, <span class="st">&#39;Brasilia&#39;</span>, <span class="st">&#39;Santiago&#39;</span>, <span class="st">&#39;Bogota&#39;</span>, <span class="st">&#39;Caracas&#39;</span>],</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">&#39;Country&#39;</span>: [<span class="st">&#39;Argentina&#39;</span>, <span class="st">&#39;Brazil&#39;</span>, <span class="st">&#39;Chile&#39;</span>, <span class="st">&#39;Colombia&#39;</span>, <span class="st">&#39;Venezuela&#39;</span>],</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="st">&#39;Latitude&#39;</span>: [<span class="op">-</span><span class="fl">34.58</span>, <span class="op">-</span><span class="fl">15.78</span>, <span class="op">-</span><span class="fl">33.45</span>, <span class="fl">4.60</span>, <span class="fl">10.48</span>],</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="st">&#39;Longitude&#39;</span>: [<span class="op">-</span><span class="fl">58.66</span>, <span class="op">-</span><span class="fl">47.91</span>, <span class="op">-</span><span class="fl">70.66</span>, <span class="op">-</span><span class="fl">74.08</span>, <span class="op">-</span><span class="fl">66.86</span>]})</span></code></pre></div>
-<p>A GeoDataFrame needs a shapely object. We use geopandas points_from_xy() to transform Longitude and Latitude into a list of shapely.Point objects and set it as a geometry while creating the GeoDataFrame. (note that points_from_xy() is an enhanced wrapper for [Point(x, y) for x, y in zip(df.Longitude, df.Latitude)])</p>
-<pre><code>
-gdf = geopandas.GeoDataFrame(
-    df, geometry=geopandas.points_from_xy(df.Longitude, df.Latitude))
-</code></pre>
-<p>gdf looks like this :</p>
-<pre><code>
-print(gdf.head())
-           City    Country  Latitude  Longitude                     geometry
-0  Buenos Aires  Argentina    -34.58     -58.66  POINT (-58.66000 -34.58000)
-1      Brasilia     Brazil    -15.78     -47.91  POINT (-47.91000 -15.78000)
-2      Santiago      Chile    -33.45     -70.66  POINT (-70.66000 -33.45000)
-3        Bogota   Colombia      4.60     -74.08    POINT (-74.08000 4.60000)
-4       Caracas  Venezuela     10.48     -66.86   POINT (-66.86000 10.48000)
-</code></pre>
-<p>Finally, we plot the coordinates over a country-level map.</p>
-<p>world = geopandas.read_file(geopandas.datasets.get_path(‘naturalearth_lowres’))</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>numpy_df <span class="op">=</span> datatable_df.to_numpy()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pandas_df <span class="op">=</span> datatable_df.to_pandas()</span></code></pre></div>
+<p>Let’s convert our existing frame into a pandas dataframe object and compare the time taken.</p>
+<p>%%time datatable_pandas = datatable_df.to_pandas() ___________________________________________________________________ CPU times: user 17.1 s, sys: 4 s, total: 21.1 s Wall time: 21.4 s It appears that reading a file as a datatable frame and then converting it to pandas dataframe takes less time than reading through pandas dataframe. Thus, it might be a good idea to import a large data file through datatable and then convert it to pandas dataframe.</p>
+<p>type(datatable_pandas) ___________________________________________________________________ pandas.core.frame.DataFrame</p>
 </div>
+<div id="basic-frame-properties" class="section level3">
+<h3>Basic Frame Properties</h3>
+<p>Let’s look at some of the basic properties of a datatable frame which are similar to the pandas’ properties:</p>
+<p>print(datatable_df.shape) # (nrows, ncols) print(datatable_df.names[:5]) # top 5 column names print(datatable_df.stypes[:5]) # column types(top 5) ______________________________________________________________ (2260668, 145) (‘id’, ‘member_id’, ‘loan_amnt’, ‘funded_amnt’, ‘funded_amnt_inv’) (stype.bool8, stype.bool8, stype.int32, stype.int32, stype.float64) We can also use the head command to output the top ‘n’ rows.</p>
+<p>datatable_df.head(10)</p>
+<p>A glimpse of the first 10 rows of the datatable frame The colour signifies the datatype where red denotes string, green denotes int and blue stands for float.</p>
 </div>
-<div id="section" class="section level3">
-<h3></h3>
-<p>We restrict to South America. ax = world[world.continent == ‘South America’].plot( color=‘white’, edgecolor=‘black’)</p>
-</div>
-<div id="section-1" class="section level3">
-<h3></h3>
-<p>We can now plot our <code>GeoDataFrame</code>. gdf.plot(ax=ax, color=‘red’)</p>
-<p>plt.show() ../_images/gallery_create_geopandas_from_pandas_9_0.png From WKT format Here, we consider a DataFrame having coordinates in WKT format.</p>
+<div id="summary-statistics" class="section level3">
+<h3>Summary Statistics</h3>
+<p>Calculating the summary stats in pandas is a memory consuming process but not anymore with datatable. We can compute the following per-column summary stats using datatable:</p>
+<p>datatable_df.sum() datatable_df.nunique() datatable_df.sd() datatable_df.max() datatable_df.mode() datatable_df.min() datatable_df.nmodal() datatable_df.mean() Let’s calculate the mean of the columns using both datatable and pandas to measure the time difference.</p>
+With datatable
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&#39;City&#39;</span>: [<span class="st">&#39;Buenos Aires&#39;</span>, <span class="st">&#39;Brasilia&#39;</span>, <span class="st">&#39;Santiago&#39;</span>, <span class="st">&#39;Bogota&#39;</span>, <span class="st">&#39;Caracas&#39;</span>],</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">&#39;Country&#39;</span>: [<span class="st">&#39;Argentina&#39;</span>, <span class="st">&#39;Brazil&#39;</span>, <span class="st">&#39;Chile&#39;</span>, <span class="st">&#39;Colombia&#39;</span>, <span class="st">&#39;Venezuela&#39;</span>],</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="st">&#39;Coordinates&#39;</span>: [<span class="st">&#39;POINT(-58.66 -34.58)&#39;</span>, <span class="st">&#39;POINT(-47.91 -15.78)&#39;</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;POINT(-70.66 -33.45)&#39;</span>, <span class="st">&#39;POINT(-74.08 4.60)&#39;</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&#39;POINT(-66.86 10.48)&#39;</span>]})</span></code></pre></div>
-<p>We use shapely.wkt sub-module to parse wkt format:</p>
-<pre><code>
-from shapely import wkt
-
-df[&#39;Coordinates&#39;] = geopandas.GeoSeries.from_wkt(df[&#39;Coordinates&#39;])
-</code></pre>
-The GeoDataFrame is constructed as follows :
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>datatable_df.mean()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>_______________________________________________________________</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>CPU times: user <span class="fl">5.11</span> s, sys: <span class="fl">51.8</span> ms, total: <span class="fl">5.16</span> s</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Wall time: <span class="fl">1.43</span> s</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>With pandas</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>pandas_df.mean()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>__________________________________________________________________</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Throws memory error.</span></code></pre></div>
+<p>The above command cannot be completed in pandas as it starts throwing memory error.</p>
+</div>
+<div id="data-manipulation-1" class="section level3">
+<h3>Data Manipulation</h3>
+<p>Data Tables like dataframes are columnar data structures. In datatable, the primary vehicle for all these operations is the square-bracket notation inspired by traditional matrix indexing but with more functionalities.</p>
+<p>datatable’s square-bracket notation The same DT[i, j] notation is used in mathematics when indexing matrices, in C/C++, in R, in pandas, in numpy, etc. Let’s see how we can perform common data manipulation activities using datatable:</p>
+<p>#Selecting Subsets of Rows/Columns The following code selects all rows and the funded_amnt column from the dataset.</p>
+<p>datatable_df[:,‘funded_amnt’]</p>
+<p>Here is how we can select the first 5 rows and 3 columns</p>
+<p>datatable_df[:5,:3]</p>
+<p>#Sorting the Frame With datatable</p>
+<p>Sorting the frame by a particular column can be accomplished by datatable as follows:</p>
+<p>%%time datatable_df.sort(‘funded_amnt_inv’) _________________________________________________________________ CPU times: user 534 ms, sys: 67.9 ms, total: 602 ms Wall time: 179 ms With pandas:</p>
+<p>%%time pandas_df.sort_values(by = ‘funded_amnt_inv’) ___________________________________________________________________ CPU times: user 8.76 s, sys: 2.87 s, total: 11.6 s Wall time: 12.4 s Notice the substantial time difference between datable and pandas.</p>
+<p>#Deleting Rows/Columns Here is how we can delete the column named member_id:</p>
+<p>del datatable_df[:, ‘member_id’] #GroupBy Just like in pandas, datatable also has the groupby functionalities. Let’s see how we can get the mean of funded_amount column grouped by the grade column.</p>
+<p>With datatable</p>
+<p>%%time for i in range(100): datatable_df[:, dt.sum(dt.f.funded_amnt), dt.by(dt.f.grade)] ____________________________________________________________________ CPU times: user 6.41 s, sys: 1.34 s, total: 7.76 s Wall time: 2.42 s With pandas</p>
+<p>%%time for i in range(100): pandas_df.groupby(“grade”)[“funded_amnt”].sum() ____________________________________________________________________ CPU times: user 12.9 s, sys: 859 ms, total: 13.7 s Wall time: 13.9 s</p>
+<div id="what-does-.f-stand-for" class="section level4">
+<h4>What does .f stand for?</h4>
+<p>f stands for frame proxy, and provides a simple way to refer to the Frame that we are currently operating upon. In the case of our example, dt.f simply stands for dt_df.</p>
+<p>#Filtering Rows The syntax for filtering rows is pretty similar to that of GroupBy. Let us filter those rows of loan_amntfor which the values of loan_amnt are greater than funded_amnt.</p>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> geopandas.GeoDataFrame(df, geometry<span class="op">=</span><span class="st">&#39;Coordinates&#39;</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdf.head())</span></code></pre></div>
-<pre><code>
-           City    Country                  Coordinates
-0  Buenos Aires  Argentina  POINT (-58.66000 -34.58000)
-1      Brasilia     Brazil  POINT (-47.91000 -15.78000)
-2      Santiago      Chile  POINT (-70.66000 -33.45000)
-3        Bogota   Colombia    POINT (-74.08000 4.60000)
-4       Caracas  Venezuela   POINT (-66.86000 10.48000)
-</code></pre>
-<p>Again, we can plot our GeoDataFrame.</p>
-<p>ax = world[world.continent == ‘South America’].plot( color=‘white’, edgecolor=‘black’)</p>
-<p>gdf.plot(ax=ax, color=‘red’)</p>
-<p>plt.show() ../_images/gallery_create_geopandas_from_pandas_17_0.png</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>datatable_df[dt.f.loan_amnt<span class="op">&gt;</span>dt.f.funded_amnt,<span class="st">&quot;loan_amnt&quot;</span>]</span></code></pre></div>
+<p>###Saving the Frame It is also possible to write the Frame’s content into a csv file so that it can be used in future.</p>
+<p>datatable_df.to_csv(‘output.csv’) For more data manipulation functions, refer to the documentation page.</p>
+</div>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>The datatable module definitely speeds up the execution as compared to the default pandas and this definitely is a boon when working on large datasets. However, datatable lags behind pandas in terms of functionalities. But since datatable is still undergoing active development, we might see some major additions to the library in the future.</p>
 </div>
 </div>
 </div>

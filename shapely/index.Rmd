@@ -1,0 +1,24 @@
+---
+title: "PyData Workshop - Shapely"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: united
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+PyData Workshop - Shapely
+=====================
+
+Column {.tabset}
+--------------
+
+### Shapely
+
+<h4>Shapely</h4>
+
+Shapely is a BSD-licensed Python package for manipulation and analysis of planar geometric objects. It is based on the widely deployed GEOS (the engine of PostGIS) and JTS (from which GEOS is ported) libraries. Shapely is not concerned with data formats or coordinate systems, but can be readily integrated with packages that are.
