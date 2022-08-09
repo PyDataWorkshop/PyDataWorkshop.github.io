@@ -1,0 +1,36 @@
+<h5>About Pandas</h5>
+
+<span style="text-decoration:underline;"><strong>Working with Tables</strong></span>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<font size =6>
+<table class="tg">
+  <tr>
+    <td class="tg-yw4l">
+pandas is a <a class="reference external" href="http://www.python.org/" target="_blank">Python</a> package providing fast, flexible, and expressive data structures designed to make working with “relational” or “labeled” data both easy and intuitive. It aims to be the fundamental high-level building block for doing practical, real world data analysis in Python.
+
+Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool available in any language.
+<ul>
+	<li>Book Review  of Python for Data Analysis - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/KSnotes/WmcK-bookreview.pdf" target="_blank">HERE</a></li>
+</ul>
+&nbsp;
+
+</td>
+  </tr>
+</table>
+</font>
+
+<br>
+
+
+
+<div id="footer">
+PyDataWorkshop.github.io
+</div>
+
+</body>
