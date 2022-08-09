@@ -1,0 +1,25 @@
+
+<table class="tg">
+  <tr>
+    <td class="tg-yw4l">
+<ul>
+	<li>Trimmed Mean - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.tmean.html" target="_blank">Docs</a></li>
+	<li>One Sample t-test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.ttest_1samp.html" target="_blank">Docs</a></li>
+	<li>Independent Two Sample t-test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.ttest_ind.html" target="_blank">Docs</a></li>
+</ul>
+<span style="text-decoration:underline;"><strong>Non Parametric Procedures</strong></span>
+<ul>
+	<li>Skewness Test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.skewtest.html#scipy.stats.skewtest" target="_blank">Docs</a></li>
+	<li>Mann whitney U-test - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.mstats.mannwhitneyu.html#scipy.stats.mstats.mannwhitneyu" target="_blank">Docs</a></li>
+	<li>Friedman Chi-Square Test for Repeated Measures - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.mstats.friedmanchisquare.html#scipy.stats.mstats.friedmanchisquare" target="_blank">Docs</a></li>
+</ul>
+<span style="text-decoration:underline;"><strong>Correlation</strong></span>
+<ul>
+	<li>Kendall Tau - <a href="http://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.mstats.kendalltau.html" target="_blank">Docs</a></li>
+</ul>
+
+</td>
+  </tr>
+</table>
+</font>
+
