@@ -1,4 +1,4 @@
-\section{Bivariate data}
+#### Bivariate data}
 
 \subsection{Preliminaries}
 
