@@ -1,45 +1,4 @@
-<style>
-#header {
-    background-color:lightblue;
-    color:black;
-    text-align:center;
-    padding:5px;
-}
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:300px;
-    width:100px;
-    float:left;
-    padding:5px; 
-}
-#section {
-    width:550px;
-    float:left;
-    padding:10px; 
-}
-#footer {
-    background-color:lightblue;
-    color:black;
-    clear:both;
-    text-align:center;
-    padding:5px; 
-}
-</style>
 
-<body>
-
-<div id="header">
-<h1>PyDataWorkshop.github.io</h1>
-</div>
-<br><center>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:1;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-b44r{background-color:#cbcefb;vertical-align:top}
-.tg .tg-fqpo{background-color:#cbcefb}
-</style>
 
 <a href="http://PyDataWorkshop.github.io"> Main Menu </a> | <a href="http://PyDataWorkshop.github.io/numpy"> numpy Menu </a> | <a href="http://PyDataWorkshop.github.io/scipy"> scipy Menu </a> | <a href="index.html"> pandas Menu </a>
 <h5>WHAT IS PANDAS?</h5>
@@ -63,11 +22,3 @@
   </tr>
 </table>
 </font>
-
-<br>
-
-<div id="footer">
-PyDataWorkshop.github.io
-</div>
-
-</body>
