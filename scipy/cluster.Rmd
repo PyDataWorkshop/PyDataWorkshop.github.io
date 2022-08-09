@@ -56,7 +56,7 @@
     <th class="tg-yw4l"></th>
 <ul>
 	<li>pandas Working with Time Data - <a href="http://pandas.pydata.org/pandas-docs/stable/groupby.html" target="_blank">HERE</a></li>
-	<li>pandas Time Data Example - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandasGroupBy.pdf" target="_blank">HERE</a> (data: <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/TradeoffData.csv" target="_blank">tradeoff.csv</a>)</li>
+	<li>pandas Time Data Example - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandasGroupBy.pdf" target="_blank">HERE</a>Â (data: <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/TradeoffData.csv" target="_blank">tradeoff.csv</a>)</li>
 	<li>pandas - diamonds example -HERE (data: <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/diamonds.csv" target="_blank">diamonds.csv</a>)</li>
 	<li>The Chicago Salaries Example - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandas/ChicagoSalaries/ChicagoSalaries.pdf" target="_blank">Here</a> (Data set : <a href="https://dl.dropboxusercontent.com/u/6044937/Data%20Sets/chicago.csv" target="_blank">chicago.csv</a> )
 </ul>
