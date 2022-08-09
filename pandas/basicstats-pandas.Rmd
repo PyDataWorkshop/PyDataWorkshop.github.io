@@ -1,4 +1,4 @@
-%       ==%
+
 
 \section{Stats}
 
@@ -7,11 +7,11 @@
 
 %       ==%
 
-#### describe}
+#### describe
 
 The describe method provides quick stats on all suitable columns.
 
-%       ==%
+
 ```{python eval=FALSE}
 
 df.describe()
@@ -58,6 +58,3 @@ The <tt>{corr} method provides the correlation between suitable columns.
     col2     0.760678   1.000000
 
 ```
-
-%       ==%
-\end{document}
