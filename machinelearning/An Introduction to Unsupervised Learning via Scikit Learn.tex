@@ -3,23 +3,23 @@ An Introduction to Unsupervised Learning via
 
 http://bugra.github.io/work/notes/2014-11-16/an-introduction-to-unsupervised-learning-scikit-learn/?utm_content=bufferc8fbf&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 \frametitle{Scikit Learn}
 Unsupervised Learning
 Unsupervised learning is the most applicable subfield on machine learning as it does not require any labels in the dataset and world is itself is an abundance of dataset. Human beings and their actions are recorded more and more every day(through photographs in Instagram, health data through wearables, internet activity through cookies and so on). Even the part of our lives which are not digital will be recorded in near future thanks to internet of things. In such a diversified and unlabeled dataset, unsupervised learning will become more and more important in the future.
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 Not only it could be useful for dimensionality reduction in the feature set(like a preprocessing step) but also could be useful as feature extraction method. PCA(Principal Component Analysis) could be one of the most used unsupervised learning algorithm(PCA to unsupervised learning, linear regression equivalent to regression). It could be used both a dimensionality reduction in order to reduce data but also while it compresses(reduces) data, since it tries to capture the variance, it could pick up interesting featurse, so could be used as a feature extraction method.
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 In this notebook, I will use PCA to both reduce dimensionality in the dataset and also build our feature vector. This specific method is called EigenFace(due to PCA extracting the eigenvectors and they could be visualized as face).
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 Dimensionality Reduction & Feature Extraction via PCA (EigenFace)
@@ -32,7 +32,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import scipy
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 
@@ -42,7 +42,7 @@ from sklearn import metrics
 from sklearn.neighbors import kneighbors_graph
 from sklearn.preprocessing import StandardScaler
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 from sklearn import decomposition # PCA
@@ -55,14 +55,14 @@ In [22]:
 print(faces.DESCR)
 Modified Olivetti faces dataset.
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 The original database was available from (now defunct)
 
     http://www.uk.research.att.com/facedatabase.html
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 The version retrieved here comes in MATLAB format from the personal
@@ -70,7 +70,7 @@ web page of Sam Roweis:
 
     http://www.cs.nyu.edu/~roweis/
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 There are ten different images of each of 40 distinct subjects. For some
@@ -80,7 +80,7 @@ details (glasses / no glasses). All the images were taken against a dark
 homogeneous background with the subjects in an upright, frontal position (with
 tolerance for some side movement).
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 The original dataset consisted of 92 x 112, while the Roweis version
@@ -96,7 +96,7 @@ Out[24]:
 (400, 64, 64)
 Images are nothing but reshaped faces_data. It makes it easier for us to visualize the faces in an image grid but, we will use the faces_data to apply PCA. This is because PCA expects two dimensions (n_observations, n_dimensions).
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 In [25]:
@@ -105,7 +105,7 @@ Out[25]:
 (400, 4096)
 We have 400 instances and their vector dimension is 4096(256 * 256). We could reduce this dimension by applying PCA(Principal Component Analysis) and also PCA would extract features as well.
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 Let's see some faces.
@@ -119,7 +119,7 @@ for ii in range(64):
     plt.xticks([]);
     plt.yticks([]);
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 Let's try first number of eigenfaces 16 and then see what type of eigenfaces we get. Note that I am also passing the whiten=True in the PCA in order to remove the low-frequency(constant) areas in the face as those areas are not as important as areas that have variation and change(PCA also makes an assumption on the data very similarly).
@@ -134,7 +134,7 @@ Out[27]:
 RandomizedPCA(copy=True, iterated_power=3, n_components=16, random_state=None,
        whiten=True)
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 In [28]:
@@ -151,7 +151,7 @@ for ii in range(pca.components_.shape[0]):
     plt.xticks([]);
     plt.yticks([]);
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 In [30]:
@@ -206,7 +206,7 @@ for ii in range(pca.components_.shape[0]):
 Pointers
 - PCA and Its applications | Application on Yale Face Database - EigenFace Library for Yale Face Database - Geometric Explanation of EigenFace - Original EigenFace Paper
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 Clustering Algorithms Comparison on Toy Datasets
@@ -214,7 +214,7 @@ Let's generate some datasets. Put random seed=0 for reproducibility. The dataset
 
 It is always good practice to test your machine learning pipeline on the synthetic datasets similar to original dataset that you have due to two reasons; first you could measure the effectiveness relatively easy dataset and if the results are not promising you would not waste your time to prepare the original dataset, second it is easy to compare different clustering algorithms on well-known dataset whereas it might be harder to compare in an original dataset(e.g. if we do not know how many clusters that we have in dataset).
 \end{frame}
-%============================================================= %
+%======= %
 \begin{frame}[fragile]
 	\frametitle{Scikit Learn}
 Especially, if you do not have knowledge on how all the clustering methods work and want to simply experiment, the datasets that Scikit-learn provides becomes quite handy.

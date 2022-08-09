@@ -7,13 +7,13 @@
 
 %       ==%
 
-\subsection{describe}
+#### describe}
 
 The describe method provides quick stats on all suitable columns.
 
 %       ==%
-\begin{framed}
-\begin{verbatim}
+```{python eval=FALSE}
+
 df.describe()
 
             col1      col2
@@ -25,39 +25,39 @@ min      0.10000 -1.000000
 50%      0.20000  2.000000
 75%      2.67500  6.000000
 max     10.10000  8.000000
-\end{verbatim}
-\end{framed}
+
+```
 
 %       ==%
-\subsection{covariance}
+#### covariance}
 
-The \texttt{cov} method provides the covariance between suitable columns.
+The <tt>{cov} method provides the covariance between suitable columns.
 
 
-\begin{framed}
-\begin{verbatim}
+```{python eval=FALSE}
+
 >>> df.cov()
 
                  col1       col2
     col1    24.670000  12.483333
     col2    12.483333  13.700000
-\end{verbatim}
-\end{framed}
+
+```
 
 %       ==%
 
-\subsection{correlation}
+#### correlation}
 
-The \texttt{corr} method provides the correlation between suitable columns.
-\begin{framed}
- \begin{verbatim}
+The <tt>{corr} method provides the correlation between suitable columns.
+```{python eval=FALSE}
+ 
 >>> df.corr()
   
                  col1       col2
     col1     1.000000   0.760678
     col2     0.760678   1.000000
-\end{verbatim}
-\end{framed}
+
+```
 
 %       ==%
 \end{document}

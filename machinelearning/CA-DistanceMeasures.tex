@@ -1,17 +1,17 @@
 \documentclass[SKLCluster.tex]{subfiles}
-\begin{document}
+
 \section{Distance Measures}
-\subsection{Euclidean Distance}
+#### {Euclidean Distance}
 The Euclidean distance between two points, x and y, with $k$ dimensions is calculated as:
 \[ \sqrt{ \sum^{k}_{j=1} ( x_j - y_j)^2 } \]
 The Euclidean distance is always greater than or equal to zero. The measurement would be zero for identical points and high for points that show little similarity.
 
-\subsection*{Example}
+#### *{Example}
 Compute the Euclidean Distance between the following points:
 $X = \{1,5,4,3\}$ and $Y = \{2,1,8,7\}$
 
 \begin{center}
-\begin{tabular}{|c|c|c|c|}
+\begin{array}{|c|c|c|c|}
   \hline
 $x_j$	&	$y_j$	&   $x_j - y_j$	&	$(x_j - y_j)^2$	\\ \hline
 1	&	2	&	-1	&	1	\\
@@ -19,24 +19,24 @@ $x_j$	&	$y_j$	&   $x_j - y_j$	&	$(x_j - y_j)^2$	\\ \hline
 4	&	8	&	-4	&	16	\\
 3	&	7	&	-4	&	16	\\ \hline
 	&		&		&	49	\\ \hline
-\end{tabular}
+\end{array}
 \end{center}
 The Euclidean Distance between the two points is $\sqrt{49}$ i.e. 7.
 
-\subsection{Squared Euclidean Distance}
+#### {Squared Euclidean Distance}
 The Squared Euclidean distance between two points, x and y, with $k$ dimensions is calculated as:
 \[ \sum^{k}_{j=1} ( x_j - y_j)^2  \]
 The Squared Euclidean distance may be preferred to the Euclidean distance as it is slightly less computational complex, without loss of any information.
 
 %---------------------------------------------------------------------------%
 
-\subsection{Standardized Distances}
+#### {Standardized Distances}
 
 Let us consider measuring the distances between between two points using
 the three continuous variables pollution, depth and temperature. Let us suppose that a difference of 4.1 in terms of pollution is considered quite large and unusual, while a difference of 48 in terms of depth is large, but not particularly unusual.
 What would happen if we applied the Euclidean distance formula to measure distance between two cases.
 \begin{center}
-\begin{tabular}{|c|c|c|}
+\begin{array}{|c|c|c|}
   \hline
   % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
 Variables & case 1 & case 2 \\ \hline 
@@ -44,7 +44,7 @@ Pollution & 6.0 & 1.9 \\
 Depth & 51 & 99 \\
 Temp & 3.0 & 2.9 \\
   \hline
-\end{tabular}
+\end{array}
 \end{center}
 
 Here is the calculation for Euclidean Distance:
@@ -66,7 +66,7 @@ easier to compare.
 
 \[\mbox{standardized value} = \frac{\mbox{observed value - mean}}{ \mbox{standard deviation}}\]
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|}
+\begin{array}{|c|c|c|c|c|c|c|}
   \hline
   % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
 Variables & Case 1 & Case 2 & Mean & Std. Dev & Case 1 (std) & Case 2 (std) \\ \hline
@@ -74,7 +74,7 @@ Pollution & 6.0 & 1.9 & 4.517	&	2.141	&	0.693	&	-1.222	\\
 Depth & 51 & 99 & 74.433	&	15.615	&	-1.501	&	1.573	\\
 Temp & 3.0 & 2.9 & 3.057	&	0.281	&	-0.201	&	-0.557	\\
   \hline
-\end{tabular}
+\end{array}
 \end{center}
 
 \[ d_{std} =  \sqrt{(0.693 - (- 1.222))^2 + (-1.501-1.573)^2 + (-0.201-(-0.557))^2} \]
@@ -84,39 +84,38 @@ Temp & 3.0 & 2.9 & 3.057	&	0.281	&	-0.201	&	-0.557	\\
 Pollution and temperature have higher contributions than before but depth still plays the
 largest role in this particular example, even after standardization. But this contribution is
 justified now, since it does show the biggest standardized difference between the samples. 
-\subsection{Logarithmic Transformation}
+#### {Logarithmic Transformation}
 As as alternative to scaling or standardization, the user may opt to use the logarithm of a value, rather than the value itself.
 %--------------------------------------------------------------------------------------%
-\newpage
-\subsection{\texttt{R} - Distance Measures supported by the \texttt{dist} Function}
-\begin{itemize}
-\item The \texttt{dist} function computes and returns the distance matrix computed by using the specified distance measure to compute the distances between the rows of a data matrix.
-\item 
+<p>
+#### {\texttt{R} - Distance Measures supported by the \texttt{dist} Function}
+
+ The \texttt{dist} function computes and returns the distance matrix computed by using the specified distance measure to compute the distances between the rows of a data matrix.
+ 
 The distance measures supported by \texttt{dist} are
 
-\begin{itemize}
-\item \texttt{euclidean} (but not squared euclidean directly)
-\item \texttt{maximum}
-\item \texttt{manhattan}
-\item \texttt{canberra}
-\item \texttt{binary} 
-\item \texttt{minkowski}.
-\end{itemize}
-\end{itemize}
 
-\subsection{Manhattan (City Block) Distance}
+ \texttt{euclidean} (but not squared euclidean directly)
+ \texttt{maximum}
+ \texttt{manhattan}
+ \texttt{canberra}
+ \texttt{binary}* \texttt{minkowski}.
+<p>
+<p>
+
+#### {Manhattan (City Block) Distance}
 The City block distance between two points, x and y, with $k$ dimensions is calculated as:
 \[ \sum^{k}_{j=1} | x_j - y_j |  \]
 
 The City block distance is always greater than or equal to zero. The measurement would be zero for identical points and high for points that show little similarity.
 
-\subsection*{Example}
+#### *{Example}
 Compute the Manhattan Distance between the following points: 
 $X = \{1,3,4,2\}$ and $Y = \{5,2,5,2\}$
 
 
 \begin{center}
-\begin{tabular}{|c|c|c|c|}
+\begin{array}{|c|c|c|c|}
   \hline
 $x_j$	&	$y_j$	&   $x_j - y_j$	&	$| x_j - y_j |$	\\ \hline
 1	&	5	&	-4	&	4	\\
@@ -125,12 +124,12 @@ $x_j$	&	$y_j$	&   $x_j - y_j$	&	$| x_j - y_j |$	\\ \hline
 2	&	2	&	0	&	0	\\ \hline
 & & & 6 \\
   \hline
-\end{tabular}
+\end{array}
 \end{center}
 The Manhattan Distance between the two points is 6.
 
 %--------------------------------------------------------------------------------------%
-\newpage
+<p>
 \section{Cluster Analysis : Proximity Matrices}
 
 Using \textbf{\textit{nearest neighbour}} linkage, describe how the agglomeration schedule based on the following 
@@ -141,7 +140,7 @@ proximity matrix. With nearest neighbour, a case is assigned to the cluster of t
 % Tue May 14 19:17:33 2013
 \begin{table}[ht]
 \centering
-\begin{tabular}{|r|rrrrrrrrrr|}
+\begin{array}{|r|rrrrrrrrrr|}
   \hline
 Case & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
   \hline
@@ -156,21 +155,20 @@ Case & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
   9 & 31.57 & 61.84 & 63.50 & \textbf{12.75} & 14.47 & 13.34 & 44.92 & \textbf{3.18} & 0.00 & 31.57 \\
   10 & 11.70 & \textbf{4.84} & 89.39 & 85.97 & 46.26 & 71.87 & \textbf{6.42} & 23.75 & 31.57 & 0.00 \\
    \hline
-\end{tabular}
+\end{array}
 \end{table}
 
 
-\begin{itemize}
-\item The closest pair in terms of distance (2.84) are cases 3 and 8. So this is the first linkage.
-\item The next closest pair (3.18) are 8 and 9. The next linkage joins case 9 to 3 and 8.
-\item The next closest pair (4.82) are 1 and 2. So this is the next linkage. [ So far (3,8,9) and (2,10) ] 
-\item The next closest pair (4.84) are 2 and 10. The next linkage joins case 1 to 2 and 10.
-\item The next closest pair (5.55) are 2 and 5. The next linkage joins case 5 to 1, 2 and 10. [ So far (3,8,9) and (1,2,5,10)]
-\item The next closest pair (6.42) are 7 and 10. The next linkage joins case 7 to 1, 2, 5 and 10.
-\item The next closest pair (7.13) are 4 and 6. The next linkage joins case 4 to 6. [ So far (3,8,9), (4,6) and (1,2,5,10) All cases are in clusters. This is a 3 cluster solution. ]
-\item The next closest pair (11.70) are 1 and 10. Disregard, because they are already clustered together.
-\item The next closest pair (19.44) are 4 and 9. This joins cluster (4,6) to cluster (3,8,9) [ So far (3,4,6,8,9) and (1,2,5,10). This is a 2 cluster solution.]
-\item The next closest pairing is 4 and 5. This linkage joins all cases together in one cluster.
-\end{itemize}
 
-\end{document}
+ The closest pair in terms of distance (2.84) are cases 3 and 8. So this is the first linkage.
+ The next closest pair (3.18) are 8 and 9. The next linkage joins case 9 to 3 and 8.
+ The next closest pair (4.82) are 1 and 2. So this is the next linkage. [ So far (3,8,9) and (2,10) ]* The next closest pair (4.84) are 2 and 10. The next linkage joins case 1 to 2 and 10.
+ The next closest pair (5.55) are 2 and 5. The next linkage joins case 5 to 1, 2 and 10. [ So far (3,8,9) and (1,2,5,10)]
+ The next closest pair (6.42) are 7 and 10. The next linkage joins case 7 to 1, 2, 5 and 10.
+ The next closest pair (7.13) are 4 and 6. The next linkage joins case 4 to 6. [ So far (3,8,9), (4,6) and (1,2,5,10) All cases are in clusters. This is a 3 cluster solution. ]
+ The next closest pair (11.70) are 1 and 10. Disregard, because they are already clustered together.
+ The next closest pair (19.44) are 4 and 9. This joins cluster (4,6) to cluster (3,8,9) [ So far (3,4,6,8,9) and (1,2,5,10). This is a 2 cluster solution.]
+ The next closest pairing is 4 and 5. This linkage joins all cases together in one cluster.
+<p>
+
+
