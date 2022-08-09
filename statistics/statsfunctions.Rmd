@@ -58,14 +58,14 @@
     <td class="tg-yw4l">
 
 
-<em>limited to topics from Stats101 and 102 syllabuses</em>
+<em>limited to topics from Stats101Â and 102 syllabuses</em>
 <ul>
 	<li>Basic Statistics - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandas/notes/PyData-19-stats.pdf" target="_blank">HERE</a></li>
 	<li>Statistical Testing - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandas/notes/PyData-c5-statisticaltests.pdf" target="_blank">HERE</a></li>
 	<li>statsmodel python module - <a href="https://dl.dropboxusercontent.com/u/6044937/PyData/pandas/notes/PyData-c6-statsmodeling.pdf" target="_blank">HERE</a></li>
 	<li>Quantile Statistics</li>
 	<li>Confidence Intervals</li>
-	<li>Testing for Normality  <strong>- <em>reasoning</em></strong></li>
+	<li>Testing for NormalityÂ  <strong>- <em>reasoning</em></strong></li>
 	<li>Two sample mean and median tests</li>
 	<li>Kolmogorov-Smirnov Test for two samples</li>
 	<li>Chi- Square Tests</li>
