@@ -199,7 +199,7 @@ Column {.tabset}
 
 * https://towardsdatascience.com/an-overview-of-pythons-datatable-package-5d3a97394ee9
 * https://www.openintro.org/data/index.php?data=loans_full_schema
-
+* https://datatable.readthedocs.io/en/latest/start/quick-start.html
 * https://www.kaggle.com/datasets/wordsforthewise/lending-club
 
 ### Reading the Data

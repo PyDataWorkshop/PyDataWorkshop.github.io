@@ -19,21 +19,27 @@ Column {.tabset}
 
 ### PyData Workshop
 
-<h4> Meeting 1 </h4>
+<h4> PyData Workshop </h4>
 
 #### 1. Data Sets provided
 
 * <a href="Numpy/index.html">Numpy</a>
-* Stems Details
-* Stand Summary
+* <a href="Random/index.html">Random Numbers with Numpy</a>
+* <a href="Pandas/index.html">Pandas</a>
 
-#### 2. Long term objective
+#### Data Visualization
 
-* Maximizing the Volume and value from each sub compartment
+* <a href="Seaborn/index.html">Seaborn</a>
 * This will be done by testing various cutting strategies
 
 
 
 ### What is PyData
 
-<h4> Meeting 2 </h4>
+<h4>What is PyData? </h4>
+
+PyData provides a forum for the international community of users and developers of data analysis tools to share ideas and learn from each other. The global PyData network promotes discussion of best practices, new approaches, and emerging technologies for data management, processing, analytics, and visualization.
+
+### Jupyter Notebooks
+
+<h4>Jupyter Notebooks</h4>

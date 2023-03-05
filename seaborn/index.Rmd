@@ -50,8 +50,11 @@ Seaborn is the only library we need to import for this simple example. By conven
 
 Behind the scenes, seaborn uses matplotlib to draw its plots. For interactive work, it's recommended to use a Jupyter/IPython interface in matplotlib mode, or else you'll have to call matplotlib.pyplot.show() when you want to see the plot.
 
+
 # Apply the default theme
 sns.set_theme()
+
+<p>
 This uses the matplotlib rcParam system and will affect how all matplotlib plots look, even if you don't make them with seaborn. Beyond the default theme, there are several other options, and you can independently control the style and scaling of the plot to quickly translate your work between presentation contexts (e.g., making a version of your figure that will have readable fonts when projected during a talk). If you like the matplotlib defaults or prefer a different theme, you can skip this step and still use the seaborn plotting functions.
 
 # Load an example dataset
@@ -66,7 +69,7 @@ sns.relplot(
 )
 This plot shows the relationship between five variables in the tips dataset using a single call to the seaborn function relplot(). Notice how we provided only the names of the variables and their roles in the plot. Unlike when using matplotlib directly, it wasn't necessary to specify attributes of the plot elements in terms of the color values or marker codes. Behind the scenes, seaborn handled the translation from values in the dataframe to arguments that matplotlib understands. This declarative approach lets you stay focused on the questions that you want to answer, rather than on the details of how to control matplotlib.
 
-API abstraction across visualizations
+### API abstraction across visualizations
 There is no universally best way to visualize data. Different questions are best answered by different plots. Seaborn makes it easy to switch between different visual representations by using a consistent dataset-oriented API.
 
 The function relplot() is named that way because it is designed to visualize many different statistical relationships. While scatter plots are often effective, relationships where one variable represents a measure of time are better represented by a line. The relplot() function has a convenient kind parameter that lets you easily switch to this alternate representation:
@@ -81,7 +84,7 @@ sns.relplot(
 _images/introduction_11_0.png
 Notice how the size and style parameters are used in both the scatter and line plots, but they affect the two visualizations differently: changing the marker area and symbol in the scatter plot vs the line width and dashing in the line plot. We did not need to keep those details in mind, letting us focus on the overall structure of the plot and the information we want it to convey.
 
-Statistical estimation and error bars
+### Statistical estimation and error bars
 Often, we are interested in the average value of one variable as a function of other variables. Many seaborn functions will automatically perform the statistical estimation that is necessary to answer these questions:
 
 fmri = sns.load_dataset("fmri")
@@ -163,7 +166,8 @@ g.figure.set_size_inches(6.5, 4.5)
 g.ax.margins(.15)
 g.despine(trim=True)
 _images/introduction_35_0.png
-Relationship to matplotlib
+
+### Relationship to matplotlib
 Seaborn's integration with matplotlib allows you to use it across the many environments that matplotlib supports, inlcuding exploratory analysis in notebooks, real-time interaction in GUI applications, and archival output in a number of raster and vector formats.
 
 While you can be productive using only seaborn functions, full customization of your graphics will require some knowledge of matplotlib's concepts and API. One aspect of the learning curve for new users of seaborn will be knowing when dropping down to the matplotlib layer is necessary to achieve a particular customization. On the other hand, users coming from matplotlib will find that much of their knowledge transfers.
